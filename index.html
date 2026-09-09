@@ -3,56 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Sitio Web</title>
+  <title>Los Laureles</title>
   <style>
-    /* Estilos básicos para arrancar */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
+    body { font-family: system-ui, -apple-system, sans-serif; background-color: #0d1b1e; color: #f1f5f9; line-height: 1.6; }
     
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: #1e293b; }
+    /* Navegación */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; background: #162a2d; position: sticky; top: 0; z-index: 100; }
+    nav .logo { font-size: 1.3rem; color: #2ec4b6; font-weight: bold; }
     nav ul { display: flex; list-style: none; gap: 1.5rem; }
-    nav a { color: #f8fafc; text-decoration: none; font-weight: 500; }
+    nav a { color: #f1f5f9; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #2ec4b6; }
     
-    header { padding: 4rem 2rem; text-align: center; background: linear-gradient(to bottom, #1e293b, #0f172a); }
-    header h1 { font-size: 3rem; margin-bottom: 1rem; color: #38bdf8; }
-    header p { max-width: 600px; margin: 0 auto 2rem auto; color: #94a3b8; }
+    /* Hero / Portada */
+    header { padding: 5rem 2rem; text-align: center; background: linear-gradient(to bottom, #162a2d, #0d1b1e); }
+    header h1 { font-size: 3rem; margin-bottom: 1rem; color: #2ec4b6; }
+    header p { max-width: 600px; margin: 0 auto 2rem auto; color: #94a3b8; font-size: 1.1rem; }
     
-    .btn { background: #38bdf8; color: #0f172a; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    .btn { display: inline-block; background: #2ec4b6; color: #0d1b1e; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: transform 0.2s; }
+    .btn:hover { transform: translateY(-2px); }
     
+    /* Secciones */
     section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-    h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #38bdf8; }
+    h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #2ec4b6; text-align: center; }
     
-    footer { text-align: center; padding: 2rem; background: #020617; color: #64748b; font-size: 0.9rem; }
+    /* Tarjetas de Integrantes/Plantel */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .card { background: #162a2d; padding: 1.5rem; border-radius: 12px; border: 1px solid #244347; text-align: center; }
+    .card .num { font-size: 1.8rem; font-weight: bold; color: #2ec4b6; }
+    .card h3 { font-size: 1.2rem; margin: 0.5rem 0 0.2rem 0; }
+    .card p { color: #94a3b8; font-size: 0.9rem; }
+    
+    /* Pie de página */
+    footer { text-align: center; padding: 2rem; background: #081012; color: #64748b; font-size: 0.9rem; margin-top: 2rem; }
   </style>
 </head>
 <body>
 
   <!-- Navegación -->
   <nav>
-    <div class="logo"><strong>MiProyecto</strong></div>
+    <div class="logo">LOS LAURELES</div>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#plantel">Plantel</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-  <!-- Encabezado / Hero Section -->
+  <!-- Portada -->
   <header id="inicio">
-    <h1>Título Principal de Tu Sitio</h1>
-    <p>Una breve descripción o subtítulo que explique de qué trata tu página o proyecto.</p>
-    <a href="#contacto" class="btn">Ponerme en contacto</a>
+    <h1>LOS LAURELES</h1>
+    <p>Bienvenidos al sitio oficial de Los Laureles. Compromiso, equipo y pasión en cada partido.</p>
+    <a href="#contacto" class="btn">Sumate o Contactanos</a>
   </header>
 
-  <!-- Sección Nosotros -->
+  <!-- Historia / Sobre Nosotros -->
   <section id="nosotros">
-    <h2>Sobre Nosotros</h2>
-    <p>Escribe aquí el contenido o la historia de tu proyecto basándote en lo que tienes en el PDF.</p>
+    <h2>Quiénes Somos</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #cbd5e1;">
+      Escribe aquí una breve descripción del club o equipo, cuándo se fundó o de qué trata el proyecto según la idea que tienes guardada en el PDF.
+    </p>
   </section>
 
-  <!-- Pie de página -->
+  <!-- Plantel / Integrantes -->
+  <section id="plantel">
+    <h2>Plantel Activo</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="num">#1</div>
+        <h3>Jugador 1</h3>
+        <p>Posición / Rol</p>
+      </div>
+      <div class="card">
+        <div class="num">#2</div>
+        <h3>Jugador 2</h3>
+        <p>Posición / Rol</p>
+      </div>
+      <div class="card">
+        <div class="num">#3</div>
+        <h3>Jugador 3</h3>
+        <p>Posición / Rol</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" style="text-align: center;">
+    <h2>Contacto</h2>
+    <p style="margin-bottom: 1.5rem; color: #cbd5e1;">Seguinos o escribinos para más información.</p>
+    <a href="https://instagram.com" target="_blank" class="btn">Instagram Oficial</a>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2026 Todos los derechos reservados.</p>
+    <p>© 2026 Los Laureles. Todos los derechos reservados.</p>
   </footer>
 
 </body>
