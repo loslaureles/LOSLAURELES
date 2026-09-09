@@ -3,101 +3,285 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Los Laureles</title>
+  <title>LOS LAURELES | Eternos en el tiempo</title>
   <style>
+    /* Variables de Paleta del Manual */
+    :root {
+      --negro: #111111;
+      --hueso: #EDE8DC;
+      --cielo: #7396CE;
+      --laurel: #43583A;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background-color: #0d1b1e; color: #f1f5f9; line-height: 1.6; }
     
+    body {
+      font-family: 'Courier New', Courier, monospace, sans-serif;
+      background-color: var(--hueso);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+
     /* Navegación */
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; background: #162a2d; position: sticky; top: 0; z-index: 100; }
-    nav .logo { font-size: 1.3rem; color: #2ec4b6; font-weight: bold; }
-    nav ul { display: flex; list-style: none; gap: 1.5rem; }
-    nav a { color: #f1f5f9; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-    nav a:hover { color: #2ec4b6; }
-    
-    /* Hero / Portada */
-    header { padding: 5rem 2rem; text-align: center; background: linear-gradient(to bottom, #162a2d, #0d1b1e); }
-    header h1 { font-size: 3rem; margin-bottom: 1rem; color: #2ec4b6; }
-    header p { max-width: 600px; margin: 0 auto 2rem auto; color: #94a3b8; font-size: 1.1rem; }
-    
-    .btn { display: inline-block; background: #2ec4b6; color: #0d1b1e; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: transform 0.2s; }
-    .btn:hover { transform: translateY(-2px); }
-    
-    /* Secciones */
-    section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-    h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #2ec4b6; text-align: center; }
-    
-    /* Tarjetas de Integrantes/Plantel */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .card { background: #162a2d; padding: 1.5rem; border-radius: 12px; border: 1px solid #244347; text-align: center; }
-    .card .num { font-size: 1.8rem; font-weight: bold; color: #2ec4b6; }
-    .card h3 { font-size: 1.2rem; margin: 0.5rem 0 0.2rem 0; }
-    .card p { color: #94a3b8; font-size: 0.9rem; }
-    
-    /* Pie de página */
-    footer { text-align: center; padding: 2rem; background: #081012; color: #64748b; font-size: 0.9rem; margin-top: 2rem; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background-color: var(--hueso);
+      border-bottom: 2px solid var(--negro);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--negro);
+    }
+
+    nav ul { display: flex; list-style: none; gap: 2rem; }
+    nav a {
+      color: var(--negro);
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+    nav a:hover { color: var(--laurel); }
+
+    /* Hero / Banner Principal */
+    header {
+      padding: 6rem 2rem;
+      text-align: center;
+      background-color: var(--hueso);
+      border-bottom: 2px solid var(--negro);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    header .claim {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--laurel);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 0.8rem 2.2rem;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 2px solid var(--negro);
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--laurel);
+      color: var(--hueso);
+      border-color: var(--laurel);
+    }
+
+    /* Sección Manifiesto */
+    .manifiesto {
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--negro);
+    }
+
+    .manifiesto-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .manifiesto h2 {
+      color: var(--cielo);
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .manifiesto p {
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .highlight {
+      color: var(--hueso);
+      font-weight: bold;
+      border-bottom: 1px solid var(--cielo);
+    }
+
+    /* Colección / Catálogo */
+    .coleccion {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+
+    .coleccion h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      color: var(--negro);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background-color: var(--hueso);
+      border: 2px solid var(--negro);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 350px;
+      background-color: #d8d3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--negro);
+      margin-bottom: 1rem;
+      font-weight: bold;
+      color: var(--laurel);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--laurel);
+      margin-bottom: 1rem;
+    }
+
+    /* Pie de Página */
+    footer {
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 2px solid var(--negro);
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: var(--cielo);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0.5rem;
+    }
   </style>
 </head>
 <body>
 
   <!-- Navegación -->
   <nav>
-    <div class="logo">LOS LAURELES</div>
+    <div class="brand-logo">LOS LAURELES</div>
     <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#plantel">Plantel</a></li>
+      <li><a href="#manifiesto">Identidad</a></li>
+      <li><a href="#coleccion">Colección</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-  <!-- Portada -->
-  <header id="inicio">
+  <!-- Header / Hero -->
+  <header>
     <h1>LOS LAURELES</h1>
-    <p>Bienvenidos al sitio oficial de Los Laureles. Compromiso, equipo y pasión en cada partido.</p>
-    <a href="#contacto" class="btn">Sumate o Contactanos</a>
+    <div class="claim">ETERNOS EN EL TIEMPO</div>
+    <a href="#coleccion" class="btn">Ver Colección</a>
   </header>
 
-  <!-- Historia / Sobre Nosotros -->
-  <section id="nosotros">
-    <h2>Quiénes Somos</h2>
-    <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #cbd5e1;">
-      Escribe aquí una breve descripción del club o equipo, cuándo se fundó o de qué trata el proyecto según la idea que tienes guardada en el PDF.
-    </p>
-  </section>
-
-  <!-- Plantel / Integrantes -->
-  <section id="plantel">
-    <h2>Plantel Activo</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="num">#1</div>
-        <h3>Jugador 1</h3>
-        <p>Posición / Rol</p>
-      </div>
-      <div class="card">
-        <div class="num">#2</div>
-        <h3>Jugador 2</h3>
-        <p>Posición / Rol</p>
-      </div>
-      <div class="card">
-        <div class="num">#3</div>
-        <h3>Jugador 3</h3>
-        <p>Posición / Rol</p>
-      </div>
+  <!-- Manifiesto -->
+  <section class="manifiesto" id="manifiesto">
+    <div class="manifiesto-container">
+      <h2>NUESTRA IDENTIDAD</h2>
+      <p>No hablamos de alcanzar la gloria.<br>Hablamos de aquello que <span class="highlight">permanece</span>.</p>
+      <p>De una identidad que atraviesa el tiempo, cambia de forma, se transforma y sigue viva.</p>
+      <p>De lo que heredamos, hacemos propio y volvemos a contar a nuestra manera.</p>
+      <p style="margin-top: 2rem; font-weight: bold; color: var(--cielo);">
+        LA VERDADERA GLORIA NO ESTÁ EN LLEGAR, SINO EN PERMANECER.
+      </p>
     </div>
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto" style="text-align: center;">
-    <h2>Contacto</h2>
-    <p style="margin-bottom: 1.5rem; color: #cbd5e1;">Seguinos o escribinos para más información.</p>
-    <a href="https://instagram.com" target="_blank" class="btn">Instagram Oficial</a>
+  <!-- Catálogo -->
+  <section class="coleccion" id="coleccion">
+    <h2>PRODUCTOS DESTACADOS</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-img">MOCKUP / PRENDA 1</div>
+        <h3>REMERA OVERSIZED LAUREL</h3>
+        <div class="price">EDICIÓN LIMITADA</div>
+        <a href="#contacto" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
+      </div>
+
+      <div class="card">
+        <div class="card-img">MOCKUP / PRENDA 2</div>
+        <h3>HOODIE ETERNOS</h3>
+        <div class="price">EDICIÓN LIMITADA</div>
+        <a href="#contacto" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
+      </div>
+
+      <div class="card">
+        <div class="card-img">MOCKUP / PRENDA 3</div>
+        <h3>GORRA SOL DE MAYO</h3>
+        <div class="price">EDICIÓN LIMITADA</div>
+        <a href="#contacto" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
+      </div>
+
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>© 2026 Los Laureles. Todos los derechos reservados.</p>
+  <footer id="contacto">
+    <p>LOS LAURELES — ETERNOS EN EL TIEMPO</p>
+    <p>
+      <a href="https://instagram.com" target="_blank">INSTAGRAM</a> | 
+      <a href="https://wa.me/" target="_blank">WHATSAPP</a>
+    </p>
   </footer>
 
 </body>
