@@ -3,561 +3,1887 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="LOS LAURELES — Eternos en el tiempo. Indumentaria argentina de edición limitada.">
+  <meta name="theme-color" content="#EDE8DC">
+
   <title>LOS LAURELES | Eternos en el tiempo</title>
+
   <style>
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
     :root {
       --negro: #111111;
       --hueso: #EDE8DC;
       --cielo: #7396CE;
       --laurel: #43583A;
+      --gris: #333333;
+      --blanco: #ffffff;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     body {
-      font-family: 'Courier New', Courier, monospace, sans-serif;
+      font-family: "Courier New", Courier, monospace;
       background-color: var(--hueso);
       color: var(--negro);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Navegación */
+    img {
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+
+    /* =====================================================
+       NAVEGACIÓN
+    ===================================================== */
+
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: var(--hueso);
-      border-bottom: 2px solid var(--negro);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      min-height: 78px;
+      padding: 0.7rem 3rem;
+
+      background-color: rgba(237, 232, 220, 0.97);
+      border-bottom: 2px solid var(--negro);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .brand-logo {
+      flex-shrink: 0;
     }
 
     .brand-logo img {
-      height: 50px;
       width: auto;
+      height: 54px;
       display: block;
       object-fit: contain;
     }
 
-    nav ul { display: flex; list-style: none; gap: 1.2rem; flex-wrap: wrap; }
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+
+      list-style: none;
+    }
+
     nav a {
+      position: relative;
+
       color: var(--negro);
       text-decoration: none;
+
       font-weight: bold;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       letter-spacing: 1px;
-    }
-    nav a:hover { color: var(--laurel); }
 
-    /* Header / Portada Principal */
+      transition: color 0.2s ease;
+    }
+
+    nav a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+
+      width: 0;
+      height: 2px;
+
+      background-color: var(--laurel);
+
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--laurel);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+
+    /* BOTÓN MENÚ MOBILE */
+
+    .menu-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      background: transparent;
+      border: 2px solid var(--negro);
+
+      cursor: pointer;
+
+      align-items: center;
+      justify-content: center;
+
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+
+      width: 21px;
+      height: 2px;
+
+      background-color: var(--negro);
+
+      transition: 0.2s ease;
+    }
+
+
+    /* =====================================================
+       PORTADA
+    ===================================================== */
+
     header {
-      padding: 6rem 2rem;
+      min-height: calc(100vh - 78px);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 5rem 2rem;
+
       text-align: center;
+
       border-bottom: 2px solid var(--negro);
+
       background-color: var(--hueso);
     }
 
     header h1 {
-      font-size: 4rem;
+      max-width: 1100px;
+
+      font-size: clamp(3.2rem, 8vw, 7rem);
+
+      line-height: 0.95;
+
       font-weight: 900;
-      letter-spacing: 6px;
+
+      letter-spacing: clamp(3px, 1vw, 9px);
+
       text-transform: uppercase;
-      margin-bottom: 0.8rem;
+
+      margin-bottom: 2rem;
     }
 
     header .claim {
-      font-size: 1.3rem;
+      margin-bottom: 3rem;
+
+      font-size: clamp(1rem, 2vw, 1.35rem);
+
       font-weight: bold;
-      letter-spacing: 4px;
+
+      letter-spacing: clamp(2px, 0.7vw, 5px);
+
       color: var(--laurel);
-      margin-bottom: 2.5rem;
+
       text-transform: uppercase;
     }
 
+
+    /* =====================================================
+       BOTONES
+    ===================================================== */
+
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
+
+      padding: 0.8rem 2rem;
+
       background-color: var(--negro);
       color: var(--hueso);
-      padding: 0.8rem 2.2rem;
+
+      border: 2px solid var(--negro);
+
       text-decoration: none;
+
       font-weight: bold;
       text-transform: uppercase;
-      border: 2px solid var(--negro);
+
       letter-spacing: 2px;
-      transition: all 0.2s ease;
+
+      cursor: pointer;
+
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .btn:hover {
       background-color: var(--laurel);
       border-color: var(--laurel);
+
       color: var(--hueso);
+
+      transform: translateY(-2px);
     }
 
-    /* Banner de Beneficios */
+    .btn:active {
+      transform: translateY(0);
+    }
+
+
+    /* =====================================================
+       BANNER DE BENEFICIOS
+    ===================================================== */
+
     .features-banner {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      grid-template-columns: repeat(3, 1fr);
+
       background-color: var(--negro);
       color: var(--hueso);
+
       border-bottom: 2px solid var(--negro);
-      text-align: center;
     }
 
     .feature-item {
-      padding: 1.5rem 1rem;
-      border-right: 1px solid #333;
+      padding: 2rem 1.5rem;
+
+      text-align: center;
+
+      border-right: 1px solid #444;
+    }
+
+    .feature-item:last-child {
+      border-right: none;
     }
 
     .feature-item h4 {
+      margin-bottom: 0.5rem;
+
       color: var(--cielo);
+
       font-size: 0.95rem;
+
       letter-spacing: 2px;
-      margin-bottom: 0.3rem;
+
       text-transform: uppercase;
     }
 
     .feature-item p {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+
       letter-spacing: 1px;
+
+      color: var(--hueso);
     }
 
-    /* Manifiesto */
+
+    /* =====================================================
+       MANIFIESTO
+    ===================================================== */
+
     .manifiesto {
+      padding: 6rem 2rem;
+
       background-color: var(--negro);
       color: var(--hueso);
-      padding: 5rem 2rem;
+
       text-align: center;
+
       border-bottom: 2px solid var(--negro);
     }
 
     .manifiesto-container {
-      max-width: 800px;
+      max-width: 850px;
+
       margin: 0 auto;
     }
 
     .manifiesto img {
+      display: block;
+
       width: 100%;
       max-width: 750px;
       height: auto;
+
+      margin: 0 auto 4rem;
+
       border: 1px solid var(--hueso);
-      margin-bottom: 3rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .manifiesto-texto {
-      font-size: 1.05rem;
+      font-size: 1rem;
+
       letter-spacing: 1.5px;
+
       line-height: 2;
+
       text-transform: uppercase;
     }
 
     .manifiesto-texto p {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
     }
 
     .highlight-cielo {
       color: var(--cielo);
+
       font-weight: bold;
     }
 
     .highlight-glow {
-      color: var(--cielo);
-      font-weight: bold;
-      font-size: 1.25rem;
-      letter-spacing: 2.5px;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 1.8rem;
+
       border-top: 1px dashed var(--cielo);
-      padding-top: 1.5rem;
+
+      color: var(--cielo);
+
+      font-size: 1.25rem;
+
+      font-weight: bold;
+
+      letter-spacing: 2px;
     }
 
-    /* Paleta de Colores */
+
+    /* =====================================================
+       PALETA
+    ===================================================== */
+
     .palette-section {
-      padding: 4rem 2rem;
       max-width: 1000px;
+
       margin: 0 auto;
+
+      padding: 5rem 2rem;
+
       border-bottom: 2px solid var(--negro);
     }
 
     .palette-section h2 {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 2rem;
-      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
+
       text-align: center;
+
+      font-size: 2rem;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
     }
 
     .palette-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 1rem;
     }
 
     .color-card {
-      padding: 1.5rem;
+      min-height: 130px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
       border: 2px solid var(--negro);
-      font-weight: bold;
-      font-size: 0.85rem;
+
       text-align: center;
+
+      font-weight: bold;
+
+      font-size: 0.85rem;
     }
 
-    .color-card.negro { background-color: var(--negro); color: var(--hueso); }
-    .color-card.hueso { background-color: var(--hueso); color: var(--negro); }
-    .color-card.cielo { background-color: var(--cielo); color: var(--negro); }
-    .color-card.laurel { background-color: var(--laurel); color: var(--hueso); }
+    .color-card.negro {
+      background-color: var(--negro);
+      color: var(--hueso);
+    }
 
-    /* Colección / Productos */
+    .color-card.hueso {
+      background-color: var(--hueso);
+      color: var(--negro);
+    }
+
+    .color-card.cielo {
+      background-color: var(--cielo);
+      color: var(--negro);
+    }
+
+    .color-card.laurel {
+      background-color: var(--laurel);
+      color: var(--hueso);
+    }
+
+    .color-card p:last-child {
+      margin-top: 0.3rem;
+
+      font-size: 0.75rem;
+
+      opacity: 0.8;
+    }
+
+
+    /* =====================================================
+       COLECCIÓN
+    ===================================================== */
+
     .coleccion {
       max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 2rem;
+
+      margin: 0 auto;
+
+      padding: 6rem 2rem;
     }
 
     .coleccion h2 {
+      margin-bottom: 3.5rem;
+
       text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      letter-spacing: 3px;
+
+      font-size: 2.5rem;
+
+      letter-spacing: 4px;
+
       text-transform: uppercase;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      grid-template-columns: repeat(3, 1fr);
+
       gap: 2rem;
     }
 
     .card {
-      background-color: var(--hueso);
-      border: 2px solid var(--negro);
       padding: 1rem;
+
+      background-color: var(--hueso);
+
+      border: 2px solid var(--negro);
+
       text-align: center;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+
+      box-shadow: 7px 7px 0 var(--negro);
+    }
+
+    .card-image {
+      overflow: hidden;
+
+      margin-bottom: 1.3rem;
+
+      border: 1px solid var(--negro);
     }
 
     .card img {
+      display: block;
+
       width: 100%;
-      height: 350px;
+      height: 380px;
+
       object-fit: cover;
-      border: 1px solid var(--negro);
-      margin-bottom: 1rem;
+
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.03);
     }
 
     .card h3 {
+      margin-bottom: 1.2rem;
+
       font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+
+      letter-spacing: 1.5px;
+
       text-transform: uppercase;
+    }
+
+    .whatsapp-buttons {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 0.5rem;
+    }
+
+    .whatsapp-btn {
+      width: 100%;
+
+      padding: 0.65rem 1rem;
+
+      font-size: 0.75rem;
+
       letter-spacing: 1px;
     }
 
-    /* Tabla de Talles */
+    .whatsapp-btn.secondary {
+      background-color: var(--laurel);
+
+      border-color: var(--laurel);
+    }
+
+    .whatsapp-btn.secondary:hover {
+      background-color: var(--negro);
+
+      border-color: var(--negro);
+    }
+
+
+    /* =====================================================
+       TALLES
+    ===================================================== */
+
     .talles-section {
       max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 2rem;
+
+      margin: 0 auto;
+
+      padding: 5rem 2rem;
     }
 
     .talles-section h2 {
+      margin-bottom: 2rem;
+
       text-align: center;
-      margin-bottom: 1.5rem;
+
+      font-size: 2rem;
+
+      letter-spacing: 3px;
+
       text-transform: uppercase;
-      letter-spacing: 2px;
+    }
+
+    .tabla-wrapper {
+      overflow-x: auto;
+
+      border: 2px solid var(--negro);
     }
 
     .tabla-talles {
       width: 100%;
+
       border-collapse: collapse;
-      border: 2px solid var(--negro);
+
       text-align: center;
+
       font-weight: bold;
     }
 
     .tabla-talles th {
+      padding: 1rem;
+
       background-color: var(--negro);
+
       color: var(--hueso);
-      padding: 0.8rem;
+
+      letter-spacing: 1px;
     }
 
     .tabla-talles td {
-      padding: 0.8rem;
+      padding: 1rem;
+
       border-bottom: 1px solid var(--negro);
     }
 
-    /* Sección Cuidado de Prendas */
+    .tabla-talles tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tabla-talles tbody tr:hover {
+      background-color: rgba(67, 88, 58, 0.1);
+    }
+
+
+    /* =====================================================
+       CUIDADO
+    ===================================================== */
+
     .care-section {
+      padding: 5rem 2rem;
+
       background-color: var(--hueso);
+
       border-top: 2px solid var(--negro);
       border-bottom: 2px solid var(--negro);
-      padding: 4rem 2rem;
     }
 
     .care-container {
-      max-width: 900px;
+      max-width: 1000px;
+
       margin: 0 auto;
     }
 
     .care-container h2 {
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
       margin-bottom: 2.5rem;
-      font-size: 1.8rem;
+
+      text-align: center;
+
+      font-size: 2rem;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
     }
 
     .care-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      grid-template-columns: repeat(3, 1fr);
+
       gap: 1.5rem;
-      text-align: center;
     }
 
     .care-card {
+      padding: 2rem 1.5rem;
+
       border: 2px solid var(--negro);
-      padding: 1.5rem 1rem;
+
       background-color: var(--hueso);
+
+      text-align: center;
     }
 
     .care-card h4 {
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+
       color: var(--laurel);
-      letter-spacing: 1px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
     }
 
-    /* Sección Preguntas Frecuentes */
+    .care-card p {
+      font-size: 0.9rem;
+    }
+
+
+    /* =====================================================
+       FAQ
+    ===================================================== */
+
     .faq-section {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 2rem;
+      max-width: 850px;
+
+      margin: 0 auto;
+
+      padding: 5rem 2rem;
     }
 
     .faq-section h2 {
+      margin-bottom: 2.5rem;
+
       text-align: center;
+
+      font-size: 2rem;
+
+      letter-spacing: 3px;
+
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 2rem;
     }
 
     .faq-item {
-      border: 2px solid var(--negro);
       margin-bottom: 1rem;
-      padding: 1.2rem;
+
+      padding: 1.5rem;
+
       background-color: var(--hueso);
+
+      border: 2px solid var(--negro);
     }
 
     .faq-item h3 {
+      margin-bottom: 0.6rem;
+
       font-size: 1rem;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      color: var(--negro);
+
       letter-spacing: 1px;
+
+      text-transform: uppercase;
     }
 
     .faq-item p {
+      color: var(--gris);
+
       font-size: 0.9rem;
-      color: #333;
     }
 
-    /* Footer */
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
     footer {
+      padding: 4rem 2rem;
+
       background-color: var(--negro);
+
       color: var(--hueso);
-      padding: 3rem 2rem;
+
       text-align: center;
+
       border-top: 2px solid var(--negro);
     }
 
-    footer p {
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+    footer .footer-title {
+      margin-bottom: 1.5rem;
+
+      font-size: 1rem;
+
+      letter-spacing: 3px;
+    }
+
+    .footer-links {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 0.5rem 1rem;
     }
 
     footer a {
       color: var(--cielo);
+
       text-decoration: none;
+
       font-weight: bold;
-      margin: 0 0.5rem;
+
+      letter-spacing: 1px;
+
+      transition: color 0.2s ease;
     }
+
+    footer a:hover {
+      color: var(--hueso);
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      nav {
+        padding: 0.7rem 1.5rem;
+      }
+
+      nav ul {
+        gap: 0.8rem;
+      }
+
+      nav a {
+        font-size: 0.72rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .palette-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 700px) {
+
+      /* NAV */
+
+      nav {
+        min-height: 70px;
+
+        padding: 0.6rem 1rem;
+      }
+
+      .brand-logo img {
+        height: 48px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+        right: 0;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 0;
+
+        background-color: var(--hueso);
+
+        border-bottom: 2px solid var(--negro);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      nav a {
+        display: block;
+
+        width: 100%;
+
+        padding: 1rem;
+
+        border-bottom: 1px solid rgba(17, 17, 17, 0.25);
+
+        font-size: 0.8rem;
+
+        text-align: center;
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+
+      /* PORTADA */
+
+      header {
+        min-height: calc(100vh - 70px);
+
+        padding: 4rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: clamp(3.2rem, 16vw, 5rem);
+
+        letter-spacing: 3px;
+
+        line-height: 1;
+      }
+
+      header .claim {
+        margin-bottom: 2.5rem;
+
+        font-size: 0.95rem;
+
+        letter-spacing: 2px;
+      }
+
+      header .btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
+
+      /* BENEFICIOS */
+
+      .features-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-item {
+        padding: 1.7rem 1rem;
+
+        border-right: none;
+
+        border-bottom: 1px solid #444;
+      }
+
+      .feature-item:last-child {
+        border-bottom: none;
+      }
+
+
+      /* MANIFIESTO */
+
+      .manifiesto {
+        padding: 4rem 1.2rem;
+      }
+
+      .manifiesto img {
+        margin-bottom: 2.5rem;
+      }
+
+      .manifiesto-texto {
+        font-size: 0.85rem;
+
+        letter-spacing: 1px;
+
+        line-height: 1.8;
+      }
+
+      .highlight-glow {
+        font-size: 1rem;
+
+        line-height: 1.7;
+      }
+
+
+      /* PALETA */
+
+      .palette-section {
+        padding: 4rem 1.2rem;
+      }
+
+      .palette-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 0.8rem;
+      }
+
+      .color-card {
+        min-height: 100px;
+      }
+
+
+      /* COLECCIÓN */
+
+      .coleccion {
+        padding: 4rem 1.2rem;
+      }
+
+      .coleccion h2 {
+        margin-bottom: 2.5rem;
+
+        font-size: 1.8rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+      }
+
+      .card {
+        padding: 0.8rem;
+      }
+
+      .card img {
+        height: auto;
+
+        max-height: 500px;
+
+        object-fit: cover;
+      }
+
+      .card:hover {
+        transform: none;
+
+        box-shadow: none;
+      }
+
+
+      /* TALLES */
+
+      .talles-section {
+        padding: 4rem 1.2rem;
+      }
+
+      .talles-section h2 {
+        font-size: 1.7rem;
+      }
+
+      .tabla-talles th,
+      .tabla-talles td {
+        padding: 0.75rem 0.5rem;
+
+        font-size: 0.8rem;
+      }
+
+
+      /* CUIDADO */
+
+      .care-section {
+        padding: 4rem 1.2rem;
+      }
+
+      .care-grid {
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+      }
+
+      .care-card {
+        padding: 1.5rem;
+      }
+
+
+      /* FAQ */
+
+      .faq-section {
+        padding: 4rem 1.2rem;
+      }
+
+      .faq-section h2 {
+        font-size: 1.7rem;
+      }
+
+      .faq-item {
+        padding: 1.2rem;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        padding: 3rem 1.2rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+
+        gap: 0.8rem;
+      }
+
+    }
+
+
+    /* =====================================================
+       PANTALLAS MUY CHICAS
+    ===================================================== */
+
+    @media (max-width: 380px) {
+
+      header h1 {
+        font-size: 3rem;
+      }
+
+      header .claim {
+        font-size: 0.8rem;
+      }
+
+      .palette-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    /* =====================================================
+       ACCESIBILIDAD
+    ===================================================== */
+
+    :focus-visible {
+      outline: 3px solid var(--cielo);
+
+      outline-offset: 3px;
+    }
+
   </style>
 </head>
+
+
 <body>
 
-  <!-- Navegación -->
+
+  <!-- ===================================================
+       NAVEGACIÓN
+  ==================================================== -->
+
   <nav>
+
     <div class="brand-logo">
-      <img src="logo.PNG" onerror="this.onerror=null; this.src='logo.png';" alt="LOS LAURELES">
+
+      <a href="#inicio">
+
+        <img
+          src="logo.PNG"
+          onerror="this.onerror=null; this.src='logo.png';"
+          alt="Los Laureles"
+        >
+
+      </a>
+
     </div>
-    <ul>
-      <li><a href="#identidad">Identidad</a></li>
-      <li><a href="#paleta">Paleta</a></li>
-      <li><a href="#coleccion">Colección</a></li>
-      <li><a href="#talles">Talles</a></li>
-      <li><a href="#cuidado">Cuidado</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <ul id="menu">
+
+      <li>
+        <a href="#identidad">Identidad</a>
+      </li>
+
+      <li>
+        <a href="#paleta">Paleta</a>
+      </li>
+
+      <li>
+        <a href="#coleccion">Colección</a>
+      </li>
+
+      <li>
+        <a href="#talles">Talles</a>
+      </li>
+
+      <li>
+        <a href="#cuidado">Cuidado</a>
+      </li>
+
+      <li>
+        <a href="#faq">FAQ</a>
+      </li>
+
+      <li>
+        <a href="#contacto">Contacto</a>
+      </li>
+
     </ul>
+
   </nav>
 
-  <!-- Header / Portada Principal -->
-  <header>
-    <h1>LOS LAURELES</h1>
-    <div class="claim">ETERNOS EN EL TIEMPO</div>
-    <a href="#coleccion" class="btn">Ver Colección</a>
+
+
+  <!-- ===================================================
+       PORTADA
+  ==================================================== -->
+
+  <header id="inicio">
+
+    <h1>
+      LOS<br class="mobile-break">
+      LAURELES
+    </h1>
+
+    <div class="claim">
+      ETERNOS EN EL TIEMPO
+    </div>
+
+    <a href="#coleccion" class="btn">
+      VER COLECCIÓN
+    </a>
+
   </header>
 
-  <!-- Banner de Beneficios -->
-  <div class="features-banner">
-    <div class="feature-item">
-      <h4>EDICIÓN LIMITADA</h4>
-      <p>Prendas exclusivas numeradas</p>
-    </div>
-    <div class="feature-item">
-      <h4>ENVÍOS</h4>
-      <p>A Córdoba y todo el país</p>
-    </div>
-    <div class="feature-item">
-      <h4>ATENCIÓN DIRECTA</h4>
-      <p>Asesoramiento por WhatsApp</p>
-    </div>
-  </div>
 
-  <!-- Manifiesto Completo con Texto e Imagen -->
+
+  <!-- ===================================================
+       BENEFICIOS
+  ==================================================== -->
+
+  <section class="features-banner">
+
+    <div class="feature-item">
+
+      <h4>
+        EDICIÓN LIMITADA
+      </h4>
+
+      <p>
+        Prendas exclusivas numeradas
+      </p>
+
+    </div>
+
+
+    <div class="feature-item">
+
+      <h4>
+        ENVÍOS
+      </h4>
+
+      <p>
+        A Córdoba y todo el país
+      </p>
+
+    </div>
+
+
+    <div class="feature-item">
+
+      <h4>
+        ATENCIÓN DIRECTA
+      </h4>
+
+      <p>
+        Asesoramiento por WhatsApp
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       IDENTIDAD / MANIFIESTO
+  ==================================================== -->
+
   <section class="manifiesto" id="identidad">
+
     <div class="manifiesto-container">
-      <img src="manifiesto.png" onerror="this.onerror=null; this.src='manifiesto.PNG';" alt="Manifiesto Los Laureles">
-      
+
+      <img
+        src="manifiesto.png"
+        onerror="this.onerror=null; this.src='manifiesto.PNG';"
+        alt="Manifiesto de Los Laureles"
+      >
+
+
       <div class="manifiesto-texto">
-        <p>NO HABLAMOS DE ALCANZAR LA GLORIA.</p>
-        <p>HABLAMOS DE AQUELLO QUE <span class="highlight-cielo">PERMANECE</span>.</p>
-        <p>DE UNA IDENTIDAD QUE ATRAVIESA EL TIEMPO,</p>
-        <p>CAMBIA DE FORMA, SE TRANSFORMA Y SIGUE VIVA.</p>
-        <p>DE LO QUE HEREDAMOS, HACEMOS PROPIO</p>
-        <p>Y VOLVEMOS A CONTAR A NUESTRA MANERA.</p>
-        <p>PORQUE NUESTRA IDENTIDAD NO VIVE EN EL PASADO.</p>
-        <p>SE LLEVA, SE MEZCLA, SE REINVENTA.</p>
-        <p class="highlight-glow">
-          LA VERDADERA GLORIA NO ESTÁ EN LLEGAR,<br>SINO EN PERMANECER.
+
+        <p>
+          NO HABLAMOS DE ALCANZAR LA GLORIA.
         </p>
+
+        <p>
+          HABLAMOS DE AQUELLO QUE
+          <span class="highlight-cielo">
+            PERMANECE
+          </span>.
+        </p>
+
+        <p>
+          DE UNA IDENTIDAD QUE ATRAVIESA EL TIEMPO,
+        </p>
+
+        <p>
+          CAMBIA DE FORMA, SE TRANSFORMA Y SIGUE VIVA.
+        </p>
+
+        <p>
+          DE LO QUE HEREDAMOS, HACEMOS PROPIO
+        </p>
+
+        <p>
+          Y VOLVEMOS A CONTAR A NUESTRA MANERA.
+        </p>
+
+        <p>
+          PORQUE NUESTRA IDENTIDAD NO VIVE EN EL PASADO.
+        </p>
+
+        <p>
+          SE LLEVA, SE MEZCLA, SE REINVENTA.
+        </p>
+
+
+        <p class="highlight-glow">
+
+          LA VERDADERA GLORIA NO ESTÁ EN LLEGAR,
+          <br>
+          SINO EN PERMANECER.
+
+        </p>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Paleta de Colores -->
+
+
+  <!-- ===================================================
+       PALETA
+  ==================================================== -->
+
   <section class="palette-section" id="paleta">
-    <h2>Paleta de Colores</h2>
+
+    <h2>
+      PALETA DE COLORES
+    </h2>
+
+
     <div class="palette-grid">
-      <div class="color-card negro"><p>NEGRO</p><p>#111111</p></div>
-      <div class="color-card hueso"><p>HUESO</p><p>#EDE8DC</p></div>
-      <div class="color-card cielo"><p>CIELO</p><p>#7396CE</p></div>
-      <div class="color-card laurel"><p>LAUREL</p><p>#43583A</p></div>
+
+      <div class="color-card negro">
+
+        <p>NEGRO</p>
+        <p>#111111</p>
+
+      </div>
+
+
+      <div class="color-card hueso">
+
+        <p>HUESO</p>
+        <p>#EDE8DC</p>
+
+      </div>
+
+
+      <div class="color-card cielo">
+
+        <p>CIELO</p>
+        <p>#7396CE</p>
+
+      </div>
+
+
+      <div class="color-card laurel">
+
+        <p>LAUREL</p>
+        <p>#43583A</p>
+
+      </div>
+
     </div>
+
   </section>
 
-  <!-- Colección / Catálogo -->
+
+
+  <!-- ===================================================
+       COLECCIÓN
+  ==================================================== -->
+
   <section class="coleccion" id="coleccion">
-    <h2>Colección</h2>
+
+    <h2>
+      COLECCIÓN
+    </h2>
+
+
     <div class="grid">
 
-      <!-- Producto 1 -->
-      <div class="card">
-        <img src="remera1.PNG" onerror="this.onerror=null; this.src='remera1.png';" alt="Remera 1 Los Laureles">
-        <h3>REMERA OVERSIZED</h3>
-        <a href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Oversized" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR WA 1</a>
-        <a href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Oversized" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 0.4rem; background-color: var(--laurel); border-color: var(--laurel);">CONSULTAR WA 2</a>
-      </div>
 
-      <!-- Producto 2 -->
-      <div class="card">
-        <img src="remera2.PNG" onerror="this.onerror=null; this.src='remera2.png';" alt="Remera 2 Los Laureles">
-        <h3>REMERA URBAN</h3>
-        <a href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Urban" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR WA 1</a>
-        <a href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Urban" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 0.4rem; background-color: var(--laurel); border-color: var(--laurel);">CONSULTAR WA 2</a>
-      </div>
+      <!-- PRODUCTO 1 -->
 
-      <!-- Producto 3 -->
-      <div class="card">
-        <img src="gorra.PNG" onerror="this.onerror=null; this.src='gorra.png';" alt="Gorra Los Laureles">
-        <h3>GORRA SOL DE MAYO</h3>
-        <a href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Gorra%20Sol%20de%20Mayo" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR WA 1</a>
-        <a href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Gorra%20Sol%20de%20Mayo" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 0.4rem; background-color: var(--laurel); border-color: var(--laurel);">CONSULTAR WA 2</a>
-      </div>
+      <article class="card">
+
+        <div class="card-image">
+
+          <img
+            src="remera1.PNG"
+            onerror="this.onerror=null; this.src='remera1.png';"
+            alt="Remera Oversized Los Laureles"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <h3>
+          REMERA OVERSIZED
+        </h3>
+
+
+        <div class="whatsapp-buttons">
+
+          <a
+            href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Oversized"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn whatsapp-btn"
+          >
+            CONSULTAR POR WHATSAPP
+          </a>
+
+
+          <a
+            href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Oversized"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn whatsapp-btn secondary"
+          >
+            WHATSAPP ALTERNATIVO
+          </a>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 2 -->
+
+      <article class="card">
+
+        <div class="card-image">
+
+          <img
+            src="remera2.PNG"
+            onerror="this.onerror=null; this.src='remera2.png';"
+            alt="Remera Urban Los Laureles"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <h3>
+          REMERA URBAN
+        </h3>
+
+
+        <div class="whatsapp-buttons">
+
+          <a
+            href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Urban"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn whatsapp-btn"
+          >
+            CONSULTAR POR WHATSAPP
+          </a>
+
+
+          <a
+            href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Urban"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn whatsapp-btn secondary"
+          >
+            WHATSAPP ALTERNATIVO
+          </a>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 3 -->
+
+      <article class="card">
+
+        <div class="card-image">
+
+          <img
+            src="gorra.PNG"
+            onerror="this.onerror=null; this.src='gorra.png';"
+            alt="Gorra Sol de Mayo Los Laureles"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <h3>
+          GORRA SOL DE MAYO
+        </h3>
+
+
+        <div class="whatsapp-buttons">
+
+          <a
+            href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Gorra%20Sol%20de%20Mayo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn whatsapp-btn"
+          >
+            CONSULTAR POR WHATSAPP
+          </a>
+
+
+          <a
+            href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Gorra%20Sol%20de%20Mayo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn whatsapp-btn secondary"
+          >
+            WHATSAPP ALTERNATIVO
+          </a>
+
+        </div>
+
+      </article>
+
 
     </div>
+
   </section>
 
-  <!-- Tabla de Talles -->
+
+
+  <!-- ===================================================
+       TALLES
+  ==================================================== -->
+
   <section class="talles-section" id="talles">
-    <h2>Tabla de Talles</h2>
-    <table class="tabla-talles">
-      <thead>
-        <tr>
-          <th>TALLE</th>
-          <th>ANCHO (CM)</th>
-          <th>LARGO (CM)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>S</td><td>54</td><td>70</td></tr>
-        <tr><td>M</td><td>56</td><td>72</td></tr>
-        <tr><td>L</td><td>58</td><td>74</td></tr>
-        <tr><td>XL</td><td>60</td><td>76</td></tr>
-      </tbody>
-    </table>
+
+    <h2>
+      TABLA DE TALLES
+    </h2>
+
+
+    <div class="tabla-wrapper">
+
+      <table class="tabla-talles">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              TALLE
+            </th>
+
+            <th>
+              ANCHO (CM)
+            </th>
+
+            <th>
+              LARGO (CM)
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+            <td>S</td>
+            <td>54</td>
+            <td>70</td>
+          </tr>
+
+          <tr>
+            <td>M</td>
+            <td>56</td>
+            <td>72</td>
+          </tr>
+
+          <tr>
+            <td>L</td>
+            <td>58</td>
+            <td>74</td>
+          </tr>
+
+          <tr>
+            <td>XL</td>
+            <td>60</td>
+            <td>76</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
   </section>
 
-  <!-- Cuidado de Prendas -->
+
+
+  <!-- ===================================================
+       CUIDADO
+  ==================================================== -->
+
   <section class="care-section" id="cuidado">
+
     <div class="care-container">
-      <h2>Cuidado de tus Prendas</h2>
+
+      <h2>
+        CUIDADO DE TUS PRENDAS
+      </h2>
+
+
       <div class="care-grid">
+
+
         <div class="care-card">
-          <h4>LAVADO</h4>
-          <p>Lavar siempre con agua fría y prendas del mismo tono.</p>
+
+          <h4>
+            LAVADO
+          </h4>
+
+          <p>
+            Lavar siempre con agua fría y prendas del mismo tono.
+          </p>
+
         </div>
+
+
         <div class="care-card">
-          <h4>PLANCHADO</h4>
-          <p>Planchar del revés para proteger las estampas e impresiones.</p>
+
+          <h4>
+            PLANCHADO
+          </h4>
+
+          <p>
+            Planchar del revés para proteger las estampas e impresiones.
+          </p>
+
         </div>
+
+
         <div class="care-card">
-          <h4>SECADO</h4>
-          <p>Secar a la sombra. No utilizar secadora automática.</p>
+
+          <h4>
+            SECADO
+          </h4>
+
+          <p>
+            Secar a la sombra. No utilizar secadora automática.
+          </p>
+
         </div>
+
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Preguntas Frecuentes -->
+
+
+  <!-- ===================================================
+       FAQ
+  ==================================================== -->
+
   <section class="faq-section" id="faq">
-    <h2>Preguntas Frecuentes</h2>
-    
-    <div class="faq-item">
-      <h3>¿Cómo realizo un pedido?</h3>
-      <p>Selecciona la prenda que te gusta en la sección Colección y haz clic en cualquiera de nuestros botones de WhatsApp para coordinar talle, pago y envío directo con nosotros.</p>
-    </div>
+
+    <h2>
+      PREGUNTAS FRECUENTES
+    </h2>
+
 
     <div class="faq-item">
-      <h3>¿Cuáles son los medios de pago?</h3>
-      <p>Aceptamos transferencias bancarias, Mercado Pago y efectivo al momento de la entrega presencial.</p>
+
+      <h3>
+        ¿Cómo realizo un pedido?
+      </h3>
+
+      <p>
+        Seleccioná la prenda que te gusta en la sección
+        Colección y hacé clic en cualquiera de nuestros
+        botones de WhatsApp para coordinar talle, pago y
+        envío directamente con nosotros.
+      </p>
+
     </div>
 
+
     <div class="faq-item">
-      <h3>¿Realizan envíos?</h3>
-      <p>Hacemos envíos coordinados a toda la ciudad y despachos a todo el país mediante correo.</p>
+
+      <h3>
+        ¿Cuáles son los medios de pago?
+      </h3>
+
+      <p>
+        Aceptamos transferencias bancarias, Mercado Pago
+        y efectivo al momento de la entrega presencial.
+      </p>
+
     </div>
+
+
+    <div class="faq-item">
+
+      <h3>
+        ¿Realizan envíos?
+      </h3>
+
+      <p>
+        Hacemos envíos coordinados a toda la ciudad y
+        despachos a todo el país mediante correo.
+      </p>
+
+    </div>
+
   </section>
 
-  <!-- Footer -->
+
+
+  <!-- ===================================================
+       FOOTER
+  ==================================================== -->
+
   <footer id="contacto">
-    <p>LOS LAURELES — ETERNOS EN EL TIEMPO</p>
-    <p style="margin-top: 0.8rem;">
-      <a href="https://wa.me/5493515939008" target="_blank">WHATSAPP 1</a> | 
-      <a href="https://wa.me/5493517592695" target="_blank">WHATSAPP 2</a> | 
-      <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
+
+    <p class="footer-title">
+      LOS LAURELES — ETERNOS EN EL TIEMPO
     </p>
+
+
+    <div class="footer-links">
+
+      <a
+        href="https://wa.me/5493515939008"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WHATSAPP
+      </a>
+
+
+      <span>|</span>
+
+
+      <a
+        href="https://wa.me/5493517592695"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WHATSAPP ALTERNATIVO
+      </a>
+
+
+      <span>|</span>
+
+
+      <!-- CAMBIAR POR EL INSTAGRAM REAL -->
+
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        INSTAGRAM
+      </a>
+
+    </div>
+
   </footer>
+
+
+
+  <!-- ===================================================
+       JAVASCRIPT — MENÚ MOBILE
+  ==================================================== -->
+
+  <script>
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+    const menuLinks = menu.querySelectorAll("a");
+
+
+    menuToggle.addEventListener("click", function () {
+
+      const isOpen = menu.classList.toggle("active");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+      );
+
+    });
+
+
+    /* Cerrar menú al seleccionar una sección */
+
+    menuLinks.forEach(function (link) {
+
+      link.addEventListener("click", function () {
+
+        menu.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+
+    /* Cerrar menú si se hace click fuera */
+
+    document.addEventListener("click", function (event) {
+
+      const clickedInsideMenu =
+        menu.contains(event.target);
+
+      const clickedButton =
+        menuToggle.contains(event.target);
+
+
+      if (
+        !clickedInsideMenu &&
+        !clickedButton &&
+        menu.classList.contains("active")
+      ) {
+
+        menu.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      }
+
+    });
+
+  </script>
+
 
 </body>
 </html>
