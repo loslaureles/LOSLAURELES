@@ -10,1133 +10,325 @@
   <title>LOS LAURELES | Eternos en el tiempo</title>
 
   <style>
-
-    /* =====================================================
-       VARIABLES
-    ===================================================== */
-
-    :root {
-      --negro: #111111;
-      --hueso: #EDE8DC;
-      --cielo: #7396CE;
-      --laurel: #43583A;
-      --gris: #333333;
-      --blanco: #ffffff;
-    }
-
-
-    /* =====================================================
-       RESET
-    ===================================================== */
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      font-family: "Courier New", Courier, monospace;
-      background-color: var(--hueso);
-      color: var(--negro);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-    }
-
-
-    /* =====================================================
-       NAVEGACIÓN
-    ===================================================== */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      min-height: 78px;
-      padding: 0.7rem 3rem;
-
-      background-color: rgba(237, 232, 220, 0.97);
-      border-bottom: 2px solid var(--negro);
-
-      backdrop-filter: blur(8px);
-    }
-
-    .brand-logo {
-      flex-shrink: 0;
-    }
-
-    .brand-logo img {
-      width: auto;
-      height: 54px;
-      display: block;
-      object-fit: contain;
-    }
-
-    nav ul {
-      display: flex;
-      align-items: center;
-      gap: 1.4rem;
-
-      list-style: none;
-    }
-
-    nav a {
-      position: relative;
-
-      color: var(--negro);
-      text-decoration: none;
-
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-      letter-spacing: 1px;
-
-      transition: color 0.2s ease;
-    }
-
-    nav a::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-
-      width: 0;
-      height: 2px;
-
-      background-color: var(--laurel);
-
-      transition: width 0.2s ease;
-    }
-
-    nav a:hover {
-      color: var(--laurel);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-
-    /* BOTÓN MENÚ MOBILE */
-
-    .menu-toggle {
-      display: none;
-
-      width: 44px;
-      height: 44px;
-
-      background: transparent;
-      border: 2px solid var(--negro);
-
-      cursor: pointer;
-
-      align-items: center;
-      justify-content: center;
-
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .menu-toggle span {
-      display: block;
-
-      width: 21px;
-      height: 2px;
-
-      background-color: var(--negro);
-
-      transition: 0.2s ease;
-    }
-
-
-    /* =====================================================
-       PORTADA
-    ===================================================== */
-
-    header {
-      min-height: calc(100vh - 78px);
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      padding: 5rem 2rem;
-
-      text-align: center;
-
-      border-bottom: 2px solid var(--negro);
-
-      background-color: var(--hueso);
-    }
-
-    header h1 {
-      max-width: 1100px;
-
-      font-size: clamp(3.2rem, 8vw, 7rem);
-
-      line-height: 0.95;
-
-      font-weight: 900;
-
-      letter-spacing: clamp(3px, 1vw, 9px);
-
-      text-transform: uppercase;
-
-      margin-bottom: 2rem;
-    }
-
-    header .claim {
-      margin-bottom: 3rem;
-
-      font-size: clamp(1rem, 2vw, 1.35rem);
-
-      font-weight: bold;
-
-      letter-spacing: clamp(2px, 0.7vw, 5px);
-
-      color: var(--laurel);
-
-      text-transform: uppercase;
-    }
-
-
-    /* =====================================================
-       BOTONES
-    ===================================================== */
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-height: 50px;
-
-      padding: 0.8rem 2rem;
-
-      background-color: var(--negro);
-      color: var(--hueso);
-
-      border: 2px solid var(--negro);
-
-      text-decoration: none;
-
-      font-weight: bold;
-      text-transform: uppercase;
-
-      letter-spacing: 2px;
-
-      cursor: pointer;
-
-      transition:
-        background-color 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .btn:hover {
-      background-color: var(--laurel);
-      border-color: var(--laurel);
-
-      color: var(--hueso);
-
-      transform: translateY(-2px);
-    }
-
-    .btn:active {
-      transform: translateY(0);
-    }
-
-
-    /* =====================================================
-       BANNER DE BENEFICIOS
-    ===================================================== */
-
-    .features-banner {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      background-color: var(--negro);
-      color: var(--hueso);
-
-      border-bottom: 2px solid var(--negro);
-    }
-
-    .feature-item {
-      padding: 2rem 1.5rem;
-
-      text-align: center;
-
-      border-right: 1px solid #444;
-    }
-
-    .feature-item:last-child {
-      border-right: none;
-    }
-
-    .feature-item h4 {
-      margin-bottom: 0.5rem;
-
-      color: var(--cielo);
-
-      font-size: 0.95rem;
-
-      letter-spacing: 2px;
-
-      text-transform: uppercase;
-    }
-
-    .feature-item p {
-      font-size: 0.85rem;
-
-      letter-spacing: 1px;
-
-      color: var(--hueso);
-    }
-
-
-    /* =====================================================
-       MANIFIESTO
-    ===================================================== */
-
-    .manifiesto {
-      padding: 6rem 2rem;
-
-      background-color: var(--negro);
-      color: var(--hueso);
-
-      text-align: center;
-
-      border-bottom: 2px solid var(--negro);
-    }
-
-    .manifiesto-container {
-      max-width: 850px;
-
-      margin: 0 auto;
-    }
-
-    .manifiesto img {
-      display: block;
-
-      width: 100%;
-      max-width: 750px;
-      height: auto;
-
-      margin: 0 auto 4rem;
-
-      border: 1px solid var(--hueso);
-    }
-
-    .manifiesto-texto {
-      font-size: 1rem;
-
-      letter-spacing: 1.5px;
-
-      line-height: 2;
-
-      text-transform: uppercase;
-    }
-
-    .manifiesto-texto p {
-      margin-bottom: 1.3rem;
-    }
-
-    .highlight-cielo {
-      color: var(--cielo);
-
-      font-weight: bold;
-    }
-
-    .highlight-glow {
-      margin-top: 2.5rem;
-      padding-top: 1.8rem;
-
-      border-top: 1px dashed var(--cielo);
-
-      color: var(--cielo);
-
-      font-size: 1.25rem;
-
-      font-weight: bold;
-
-      letter-spacing: 2px;
-    }
-
-
-    /* =====================================================
-       PALETA
-    ===================================================== */
-
-    .palette-section {
-      max-width: 1000px;
-
-      margin: 0 auto;
-
-      padding: 5rem 2rem;
-
-      border-bottom: 2px solid var(--negro);
-    }
-
-    .palette-section h2 {
-      margin-bottom: 2.5rem;
-
-      text-align: center;
-
-      font-size: 2rem;
-
-      letter-spacing: 3px;
-
-      text-transform: uppercase;
-    }
-
-    .palette-grid {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 1rem;
-    }
-
-    .color-card {
-      min-height: 130px;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      border: 2px solid var(--negro);
-
-      text-align: center;
-
-      font-weight: bold;
-
-      font-size: 0.85rem;
-    }
-
-    .color-card.negro {
-      background-color: var(--negro);
-      color: var(--hueso);
-    }
-
-    .color-card.hueso {
-      background-color: var(--hueso);
-      color: var(--negro);
-    }
-
-    .color-card.cielo {
-      background-color: var(--cielo);
-      color: var(--negro);
-    }
-
-    .color-card.laurel {
-      background-color: var(--laurel);
-      color: var(--hueso);
-    }
-
-    .color-card p:last-child {
-      margin-top: 0.3rem;
-
-      font-size: 0.75rem;
-
-      opacity: 0.8;
-    }
-
-
-    /* =====================================================
-       COLECCIÓN
-    ===================================================== */
-
-    .coleccion {
-      max-width: 1200px;
-
-      margin: 0 auto;
-
-      padding: 6rem 2rem;
-    }
-
-    .coleccion h2 {
-      margin-bottom: 3.5rem;
-
-      text-align: center;
-
-      font-size: 2.5rem;
-
-      letter-spacing: 4px;
-
-      text-transform: uppercase;
-    }
-
-    .grid {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 2rem;
-    }
-
-    .card {
-      padding: 1rem;
-
-      background-color: var(--hueso);
-
-      border: 2px solid var(--negro);
-
-      text-align: center;
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-
-      box-shadow: 7px 7px 0 var(--negro);
-    }
-
-    .card-image {
-      overflow: hidden;
-
-      margin-bottom: 1.3rem;
-
-      border: 1px solid var(--negro);
-    }
-
-    .card img {
-      display: block;
-
-      width: 100%;
-      height: 380px;
-
-      object-fit: cover;
-
-      transition: transform 0.4s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.03);
-    }
-
-    .card h3 {
-      margin-bottom: 1.2rem;
-
-      font-size: 1.1rem;
-
-      letter-spacing: 1.5px;
-
-      text-transform: uppercase;
-    }
-
-    .whatsapp-buttons {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 0.5rem;
-    }
-
-    .whatsapp-btn {
-      width: 100%;
-
-      padding: 0.65rem 1rem;
-
-      font-size: 0.75rem;
-
-      letter-spacing: 1px;
-    }
-
-    .whatsapp-btn.secondary {
-      background-color: var(--laurel);
-
-      border-color: var(--laurel);
-    }
-
-    .whatsapp-btn.secondary:hover {
-      background-color: var(--negro);
-
-      border-color: var(--negro);
-    }
-
-
-    /* =====================================================
-       TALLES
-    ===================================================== */
-
-    .talles-section {
-      max-width: 800px;
-
-      margin: 0 auto;
-
-      padding: 5rem 2rem;
-    }
-
-    .talles-section h2 {
-      margin-bottom: 2rem;
-
-      text-align: center;
-
-      font-size: 2rem;
-
-      letter-spacing: 3px;
-
-      text-transform: uppercase;
-    }
-
-    .tabla-wrapper {
-      overflow-x: auto;
-
-      border: 2px solid var(--negro);
-    }
-
-    .tabla-talles {
-      width: 100%;
-
-      border-collapse: collapse;
-
-      text-align: center;
-
-      font-weight: bold;
-    }
-
-    .tabla-talles th {
-      padding: 1rem;
-
-      background-color: var(--negro);
-
-      color: var(--hueso);
-
-      letter-spacing: 1px;
-    }
-
-    .tabla-talles td {
-      padding: 1rem;
-
-      border-bottom: 1px solid var(--negro);
-    }
-
-    .tabla-talles tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .tabla-talles tbody tr:hover {
-      background-color: rgba(67, 88, 58, 0.1);
-    }
-
-
-    /* =====================================================
-       CUIDADO
-    ===================================================== */
-
-    .care-section {
-      padding: 5rem 2rem;
-
-      background-color: var(--hueso);
-
-      border-top: 2px solid var(--negro);
-      border-bottom: 2px solid var(--negro);
-    }
-
-    .care-container {
-      max-width: 1000px;
-
-      margin: 0 auto;
-    }
-
-    .care-container h2 {
-      margin-bottom: 2.5rem;
-
-      text-align: center;
-
-      font-size: 2rem;
-
-      letter-spacing: 3px;
-
-      text-transform: uppercase;
-    }
-
-    .care-grid {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 1.5rem;
-    }
-
-    .care-card {
-      padding: 2rem 1.5rem;
-
-      border: 2px solid var(--negro);
-
-      background-color: var(--hueso);
-
-      text-align: center;
-    }
-
-    .care-card h4 {
-      margin-bottom: 0.8rem;
-
-      color: var(--laurel);
-
-      letter-spacing: 2px;
-
-      text-transform: uppercase;
-    }
-
-    .care-card p {
-      font-size: 0.9rem;
-    }
-
-
-    /* =====================================================
-       FAQ
-    ===================================================== */
-
-    .faq-section {
-      max-width: 850px;
-
-      margin: 0 auto;
-
-      padding: 5rem 2rem;
-    }
-
-    .faq-section h2 {
-      margin-bottom: 2.5rem;
-
-      text-align: center;
-
-      font-size: 2rem;
-
-      letter-spacing: 3px;
-
-      text-transform: uppercase;
-    }
-
-    .faq-item {
-      margin-bottom: 1rem;
-
-      padding: 1.5rem;
-
-      background-color: var(--hueso);
-
-      border: 2px solid var(--negro);
-    }
-
-    .faq-item h3 {
-      margin-bottom: 0.6rem;
-
-      font-size: 1rem;
-
-      letter-spacing: 1px;
-
-      text-transform: uppercase;
-    }
-
-    .faq-item p {
-      color: var(--gris);
-
-      font-size: 0.9rem;
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    footer {
-      padding: 4rem 2rem;
-
-      background-color: var(--negro);
-
-      color: var(--hueso);
-
-      text-align: center;
-
-      border-top: 2px solid var(--negro);
-    }
-
-    footer .footer-title {
-      margin-bottom: 1.5rem;
-
-      font-size: 1rem;
-
-      letter-spacing: 3px;
-    }
-
-    .footer-links {
-      display: flex;
-
-      justify-content: center;
-      align-items: center;
-
-      flex-wrap: wrap;
-
-      gap: 0.5rem 1rem;
-    }
-
-    footer a {
-      color: var(--cielo);
-
-      text-decoration: none;
-
-      font-weight: bold;
-
-      letter-spacing: 1px;
-
-      transition: color 0.2s ease;
-    }
-
-    footer a:hover {
-      color: var(--hueso);
-    }
-
-
-    /* =====================================================
-       TABLET
-    ===================================================== */
-
-    @media (max-width: 900px) {
-
-      nav {
-        padding: 0.7rem 1.5rem;
-      }
-
-      nav ul {
-        gap: 0.8rem;
-      }
-
-      nav a {
-        font-size: 0.72rem;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .palette-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-    }
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 700px) {
-
-      /* NAV */
-
-      nav {
-        min-height: 70px;
-
-        padding: 0.6rem 1rem;
-      }
-
-      .brand-logo img {
-        height: 48px;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav ul {
-        position: absolute;
-
-        top: 70px;
-        left: 0;
-        right: 0;
-
-        display: none;
-
-        flex-direction: column;
-
-        gap: 0;
-
-        padding: 0;
-
-        background-color: var(--hueso);
-
-        border-bottom: 2px solid var(--negro);
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      nav ul li {
-        width: 100%;
-      }
-
-      nav a {
-        display: block;
-
-        width: 100%;
-
-        padding: 1rem;
-
-        border-bottom: 1px solid rgba(17, 17, 17, 0.25);
-
-        font-size: 0.8rem;
-
-        text-align: center;
-      }
-
-      nav a::after {
-        display: none;
-      }
-
-
-      /* PORTADA */
-
-      header {
-        min-height: calc(100vh - 70px);
-
-        padding: 4rem 1.5rem;
-      }
-
-      header h1 {
-        font-size: clamp(3.2rem, 16vw, 5rem);
-
-        letter-spacing: 3px;
-
-        line-height: 1;
-      }
-
-      header .claim {
-        margin-bottom: 2.5rem;
-
-        font-size: 0.95rem;
-
-        letter-spacing: 2px;
-      }
-
-      header .btn {
-        width: 100%;
-        max-width: 320px;
-      }
-
-
-      /* BENEFICIOS */
-
-      .features-banner {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-item {
-        padding: 1.7rem 1rem;
-
-        border-right: none;
-
-        border-bottom: 1px solid #444;
-      }
-
-      .feature-item:last-child {
-        border-bottom: none;
-      }
-
-
-      /* MANIFIESTO */
-
-      .manifiesto {
-        padding: 4rem 1.2rem;
-      }
-
-      .manifiesto img {
-        margin-bottom: 2.5rem;
-      }
-
-      .manifiesto-texto {
-        font-size: 0.85rem;
-
-        letter-spacing: 1px;
-
-        line-height: 1.8;
-      }
-
-      .highlight-glow {
-        font-size: 1rem;
-
-        line-height: 1.7;
-      }
-
-
-      /* PALETA */
-
-      .palette-section {
-        padding: 4rem 1.2rem;
-      }
-
-      .palette-grid {
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 0.8rem;
-      }
-
-      .color-card {
-        min-height: 100px;
-      }
-
-
-      /* COLECCIÓN */
-
-      .coleccion {
-        padding: 4rem 1.2rem;
-      }
-
-      .coleccion h2 {
-        margin-bottom: 2.5rem;
-
-        font-size: 1.8rem;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-
-        gap: 2rem;
-      }
-
-      .card {
-        padding: 0.8rem;
-      }
-
-      .card img {
-        height: auto;
-
-        max-height: 500px;
-
-        object-fit: cover;
-      }
-
-      .card:hover {
-        transform: none;
-
-        box-shadow: none;
-      }
-
-
-      /* TALLES */
-
-      .talles-section {
-        padding: 4rem 1.2rem;
-      }
-
-      .talles-section h2 {
-        font-size: 1.7rem;
-      }
-
-      .tabla-talles th,
-      .tabla-talles td {
-        padding: 0.75rem 0.5rem;
-
-        font-size: 0.8rem;
-      }
-
-
-      /* CUIDADO */
-
-      .care-section {
-        padding: 4rem 1.2rem;
-      }
-
-      .care-grid {
-        grid-template-columns: 1fr;
-
-        gap: 1rem;
-      }
-
-      .care-card {
-        padding: 1.5rem;
-      }
-
-
-      /* FAQ */
-
-      .faq-section {
-        padding: 4rem 1.2rem;
-      }
-
-      .faq-section h2 {
-        font-size: 1.7rem;
-      }
-
-      .faq-item {
-        padding: 1.2rem;
-      }
-
-
-      /* FOOTER */
-
-      footer {
-        padding: 3rem 1.2rem;
-      }
-
-      .footer-links {
-        flex-direction: column;
-
-        gap: 0.8rem;
-      }
-
-    }
-
-
-    /* =====================================================
-       PANTALLAS MUY CHICAS
-    ===================================================== */
-
-    @media (max-width: 380px) {
-
-      header h1 {
-        font-size: 3rem;
-      }
-
-      header .claim {
-        font-size: 0.8rem;
-      }
-
-      .palette-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    /* =====================================================
-       ACCESIBILIDAD
-    ===================================================== */
-
-    :focus-visible {
-      outline: 3px solid var(--cielo);
-
-      outline-offset: 3px;
-    }
-
-  </style>
+@import url('https://fonts.googleapis.com/css2?family=Anek+Latin:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+  --negro:#111111;
+  --hueso:#EDE8DC;
+  --cielo:#7396CE;
+  --laurel:#43583A;
+  --gris:#333333;
+  --blanco:#fff;
+  --line:1px solid var(--negro);
+  --display:"Arial Narrow","Anek Latin",Arial,sans-serif;
+  --body:"Anek Latin",Arial,sans-serif;
+  --decor:"DS-Digital","Courier New",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{
+  font-family:var(--body);
+  background:var(--hueso);
+  color:var(--negro);
+  line-height:1.35;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+body::selection{background:var(--cielo);color:var(--negro)}
+
+nav{
+  position:sticky;top:0;z-index:1000;
+  min-height:82px;padding:0 4vw;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(237,232,220,.96);
+  border-bottom:var(--line);
+  backdrop-filter:blur(10px);
+}
+.brand-logo img{height:48px;width:auto;object-fit:contain}
+nav ul{display:flex;gap:2rem;list-style:none;align-items:center}
+nav a{
+  position:relative;text-decoration:none;
+  font-family:var(--body);font-size:.75rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+}
+nav a::after{
+  content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;
+  background:var(--laurel);transition:.25s ease;
+}
+nav a:hover::after{width:100%}
+nav a:hover{color:var(--laurel)}
+
+.menu-toggle{
+  display:none;width:42px;height:42px;background:transparent;
+  border:var(--line);cursor:pointer;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+}
+.menu-toggle span{width:20px;height:1px;background:var(--negro)}
+
+header{
+  min-height:calc(100vh - 82px);
+  padding:6vw 5vw 5vw;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom:var(--line);
+}
+header::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(237,232,220,.9),rgba(237,232,220,.9)),
+    url("manifiesto.png") center/cover;
+  opacity:.22;
+  filter:grayscale(1);
+}
+.hero-inner{position:relative;z-index:1;text-align:left;width:min(1200px,100%)}
+header h1{
+  font-family:var(--display);
+  font-stretch:condensed;
+  font-size:clamp(5rem,15vw,13rem);
+  font-weight:900;
+  line-height:.78;
+  letter-spacing:-.075em;
+  text-transform:uppercase;
+  max-width:1050px;
+  margin-left:-.04em;
+}
+header .claim{
+  margin-top:2.2rem;
+  font-size:clamp(1rem,2vw,1.45rem);
+  font-weight:400;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.hero-rule{width:100%;height:1px;background:var(--negro);margin-top:2.2rem}
+.hero-meta{
+  display:flex;justify-content:space-between;gap:1rem;
+  margin-top:1rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:.8rem 1.5rem;
+  background:var(--negro);color:var(--hueso);
+  border:1px solid var(--negro);
+  text-decoration:none;font-size:.72rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;
+  transition:.2s ease;
+}
+.btn:hover{background:var(--laurel);border-color:var(--laurel)}
+header .btn{margin-top:2rem}
+
+.features-banner{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--negro);color:var(--hueso);
+  border-bottom:var(--line);
+}
+.feature-item{
+  min-height:150px;padding:2.2rem 2vw;
+  border-right:1px solid #444;display:flex;
+  flex-direction:column;justify-content:space-between;
+}
+.feature-item:last-child{border-right:0}
+.feature-item h4{
+  color:var(--cielo);font-size:.7rem;letter-spacing:.18em;
+  font-weight:700;text-transform:uppercase;
+}
+.feature-item p{font-size:1rem;letter-spacing:.03em}
+
+.manifiesto{
+  min-height:100vh;padding:9vw 5vw;
+  position:relative;display:grid;place-items:center;
+  color:var(--blanco);overflow:hidden;border-bottom:var(--line);
+}
+.manifiesto::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(17,17,17,.55),rgba(17,17,17,.72)),
+    url("manifiesto.png") center/cover;
+  filter:grayscale(1) contrast(1.2);
+}
+.manifiesto-container{position:relative;z-index:1;width:min(1100px,100%)}
+.manifiesto img{
+  width:min(520px,55vw);margin:0 0 5vw auto;
+  border:1px solid rgba(255,255,255,.5);
+  mix-blend-mode:screen;opacity:.9;
+}
+.manifiesto-texto{
+  max-width:1050px;
+  font-family:var(--body);
+  font-size:clamp(1.05rem,2.15vw,2rem);
+  line-height:1.25;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.manifiesto-texto p{margin-bottom:1.6em}
+.highlight-cielo{color:var(--cielo);font-weight:700}
+.highlight-glow{
+  margin-top:3rem;padding-top:2rem;
+  border-top:1px solid var(--cielo);
+  color:var(--cielo);font-size:clamp(1.25rem,3vw,2.6rem);
+  line-height:1.05;font-weight:700;letter-spacing:.04em;
+}
+
+.palette-section{
+  max-width:none;margin:0;padding:6vw 5vw;
+  border-bottom:var(--line);
+}
+.palette-section h2,.coleccion h2,.talles-section h2,
+.care-container h2,.faq-section h2{
+  font-family:var(--display);font-weight:700;
+  text-transform:uppercase;letter-spacing:-.02em;
+}
+.palette-section h2{
+  font-size:clamp(2rem,4vw,4rem);
+  padding-bottom:1rem;border-bottom:var(--line);
+}
+.palette-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--negro);margin-top:4vw;
+  border:1px solid var(--negro);
+}
+.color-card{
+  min-height:260px;padding:2rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border:0;font-weight:600;text-align:left;
+}
+.color-card p:first-child{font-size:1.4rem;letter-spacing:.08em}
+.color-card p:last-child{font-family:var(--decor);font-size:.85rem;line-height:1.7}
+.color-card.negro{background:var(--negro);color:var(--hueso)}
+.color-card.hueso{background:var(--hueso);color:var(--negro)}
+.color-card.cielo{background:var(--cielo);color:var(--negro)}
+.color-card.laurel{background:var(--laurel);color:var(--hueso)}
+
+.coleccion{
+  max-width:none;margin:0;padding:7vw 5vw;
+  border-bottom:var(--line);
+}
+.coleccion h2{
+  font-size:clamp(3rem,7vw,7rem);
+  line-height:.85;margin-bottom:4vw;
+}
+.grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--negro);
+  border:1px solid var(--negro);
+}
+.card{
+  padding:0;background:var(--hueso);border:0;text-align:left;
+  transition:transform .2s ease;
+}
+.card:hover{transform:translateY(-5px)}
+.card-image{overflow:hidden;border:0}
+.card img{
+  width:100%;height:520px;object-fit:cover;
+  filter:grayscale(.15);transition:transform .45s ease;
+}
+.card:hover img{transform:scale(1.025)}
+.card h3{
+  padding:1.5rem 1.5rem 1rem;
+  font-family:var(--display);font-size:1.25rem;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+.whatsapp-buttons{display:flex;flex-direction:column;gap:0;padding:0 1.5rem 1.5rem}
+.whatsapp-btn{width:100%;font-size:.68rem}
+.whatsapp-btn.secondary{background:var(--laurel);border-color:var(--laurel)}
+.whatsapp-btn.secondary:hover{background:var(--negro);border-color:var(--negro)}
+
+.talles-section{
+  max-width:none;margin:0;padding:6vw 5vw;
+  border-bottom:var(--line);
+}
+.talles-section h2{font-size:clamp(2.5rem,5vw,5rem);margin-bottom:3vw}
+.tabla-wrapper{overflow-x:auto;border-top:var(--line);border-bottom:var(--line)}
+.tabla-talles{width:100%;border-collapse:collapse;text-align:left}
+.tabla-talles th{
+  padding:1.2rem .5rem;background:transparent;
+  color:var(--negro);border-bottom:var(--line);
+  font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+}
+.tabla-talles td{padding:1.2rem .5rem;border-bottom:1px solid rgba(17,17,17,.25)}
+.tabla-talles tbody tr:hover{background:rgba(115,150,206,.16)}
+
+.care-section{
+  padding:6vw 5vw;background:var(--negro);color:var(--hueso);
+  border-bottom:var(--line);
+}
+.care-container{max-width:1200px;margin:auto}
+.care-container h2{font-size:clamp(2.5rem,5vw,5rem);line-height:.9;margin-bottom:4vw}
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#555}
+.care-card{
+  min-height:220px;padding:2rem;background:var(--negro);
+  border:0;text-align:left;display:flex;flex-direction:column;justify-content:space-between;
+}
+.care-card h4{color:var(--cielo);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase}
+.care-card p{font-size:1.05rem;max-width:28ch}
+
+.faq-section{max-width:1000px;margin:0 auto;padding:7vw 5vw}
+.faq-section h2{font-size:clamp(2.5rem,5vw,5rem);line-height:.9;margin-bottom:4vw}
+.faq-item{padding:1.8rem 0;border-top:var(--line);background:transparent}
+.faq-item:last-child{border-bottom:var(--line)}
+.faq-item h3{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.7rem}
+.faq-item p{color:var(--gris);max-width:70ch;font-size:1rem}
+
+footer{
+  padding:3rem 5vw;background:var(--laurel);color:var(--hueso);
+  text-align:left;border-top:var(--line);
+}
+footer .footer-title{
+  margin-bottom:2rem;font-family:var(--display);
+  font-size:clamp(1.3rem,3vw,2.5rem);letter-spacing:.02em;
+}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 1.5rem}
+footer a{color:var(--hueso);text-decoration:none;font-size:.7rem;font-weight:600;letter-spacing:.14em}
+footer a:hover{color:var(--cielo)}
+
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  nav ul{gap:1rem}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card img{height:430px}
+}
+@media(max-width:700px){
+  nav{min-height:70px}
+  .brand-logo img{height:42px}
+  .menu-toggle{display:flex}
+  nav ul{
+    position:absolute;top:70px;left:0;right:0;display:none;
+    flex-direction:column;gap:0;background:var(--hueso);
+    border-bottom:var(--line);align-items:stretch;
+  }
+  nav ul.active{display:flex}
+  nav ul li{width:100%}
+  nav a{display:block;padding:1rem;text-align:center;border-bottom:1px solid rgba(17,17,17,.2)}
+  nav a::after{display:none}
+  header{min-height:calc(100vh - 70px);padding:4rem 1.2rem}
+  header h1{font-size:clamp(4.2rem,20vw,8rem)}
+  .hero-meta{font-size:.6rem}
+  .features-banner{grid-template-columns:1fr}
+  .feature-item{min-height:120px;border-right:0;border-bottom:1px solid #444}
+  .feature-item:last-child{border-bottom:0}
+  .manifiesto{padding:5rem 1.2rem}
+  .manifiesto img{width:100%;margin:0 0 3rem}
+  .manifiesto-texto{font-size:1rem;line-height:1.35}
+  .palette-section,.coleccion,.talles-section,.care-section,.faq-section{padding:4.5rem 1.2rem}
+  .palette-grid,.grid{grid-template-columns:1fr}
+  .color-card{min-height:180px}
+  .card img{height:auto;max-height:560px}
+  .card:hover{transform:none}
+  .care-grid{grid-template-columns:1fr}
+  .care-card{min-height:170px}
+  footer{padding:3rem 1.2rem}
+  .footer-links{flex-direction:column;gap:.8rem}
+}
+@media(max-width:380px){
+  header h1{font-size:3.8rem}
+  .palette-grid{grid-template-columns:1fr}
+}
+:focus-visible{outline:2px solid var(--cielo);outline-offset:4px}
+</style>
 </head>
 
 
@@ -1219,20 +411,17 @@
   ==================================================== -->
 
   <header id="inicio">
-
-    <h1>
-      LOS<br class="mobile-break">
-      LAURELES
-    </h1>
-
-    <div class="claim">
-      ETERNOS EN EL TIEMPO
+    <div class="hero-inner">
+      <h1>LOS<br>LAURELES</h1>
+      <div class="claim">ETERNOS EN EL TIEMPO</div>
+      <div class="hero-rule"></div>
+      <div class="hero-meta">
+        <span>INDUMENTARIA ARGENTINA</span>
+        <span>EDICIÓN LIMITADA</span>
+        <span>DESDE CÓRDOBA</span>
+      </div>
+      <a href="#coleccion" class="btn">VER COLECCIÓN</a>
     </div>
-
-    <a href="#coleccion" class="btn">
-      VER COLECCIÓN
-    </a>
-
   </header>
 
 
