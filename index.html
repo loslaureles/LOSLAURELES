@@ -21,6 +21,7 @@
       line-height: 1.6;
     }
 
+    /* Navegación */
     nav {
       display: flex;
       justify-content: space-between;
@@ -40,7 +41,7 @@
       object-fit: contain;
     }
 
-    nav ul { display: flex; list-style: none; gap: 2rem; }
+    nav ul { display: flex; list-style: none; gap: 1.5rem; }
     nav a {
       color: var(--negro);
       text-decoration: none;
@@ -51,6 +52,7 @@
     }
     nav a:hover { color: var(--laurel); }
 
+    /* Header / Portada */
     header {
       padding: 3rem 2rem;
       text-align: center;
@@ -102,6 +104,32 @@
       color: var(--hueso);
     }
 
+    /* Manifiesto */
+    .manifiesto {
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--negro);
+    }
+
+    .manifiesto-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .manifiesto img {
+      width: 100%;
+      max-width: 750px;
+      height: auto;
+      border: 1px solid var(--hueso);
+      margin-bottom: 2rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Paleta de Colores */
     .palette-section {
       padding: 4rem 2rem;
       max-width: 1000px;
@@ -136,26 +164,7 @@
     .color-card.cielo { background-color: var(--cielo); color: var(--negro); }
     .color-card.laurel { background-color: var(--laurel); color: var(--hueso); }
 
-    .manifiesto {
-      background-color: var(--negro);
-      color: var(--hueso);
-      padding: 5rem 2rem;
-      text-align: center;
-      border-bottom: 2px solid var(--negro);
-    }
-
-    .manifiesto-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .manifiesto img {
-      width: 100%;
-      max-width: 700px;
-      border: 1px solid var(--hueso);
-      margin-bottom: 2rem;
-    }
-
+    /* Colección / Productos */
     .coleccion {
       max-width: 1200px;
       margin: 4rem auto;
@@ -172,8 +181,8 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
 
     .card {
@@ -185,7 +194,7 @@
 
     .card img {
       width: 100%;
-      height: 380px;
+      height: 350px;
       object-fit: cover;
       border: 1px solid var(--negro);
       margin-bottom: 1rem;
@@ -198,6 +207,40 @@
       letter-spacing: 1px;
     }
 
+    /* Tabla de Talles */
+    .talles-section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .talles-section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .tabla-talles {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid var(--negro);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .tabla-talles th {
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 0.8rem;
+    }
+
+    .tabla-talles td {
+      padding: 0.8rem;
+      border-bottom: 1px solid var(--negro);
+    }
+
+    /* Footer */
     footer {
       background-color: var(--negro);
       color: var(--hueso);
@@ -221,6 +264,7 @@
 </head>
 <body>
 
+  <!-- Navegación -->
   <nav>
     <div class="brand-logo">
       <img src="logo.PNG" onerror="this.onerror=null; this.src='logo.png';" alt="LOS LAURELES">
@@ -229,10 +273,12 @@
       <li><a href="#identidad">Identidad</a></li>
       <li><a href="#paleta">Paleta</a></li>
       <li><a href="#coleccion">Colección</a></li>
+      <li><a href="#talles">Talles</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
+  <!-- Header / Portada -->
   <header>
     <img src="inicio.PNG" onerror="this.onerror=null; this.src='inicio.png';" alt="Inicio Los Laureles" class="hero-img">
     <h1>LOS LAURELES</h1>
@@ -240,67 +286,86 @@
     <a href="#coleccion" class="btn">Ver Colección</a>
   </header>
 
+  <!-- Manifiesto -->
   <section class="manifiesto" id="identidad">
     <div class="manifiesto-container">
-      <img src="manifiesto.PNG" onerror="this.onerror=null; this.src='manifiesto.png';" alt="Manifiesto Los Laureles">
+      <img src="manifiesto.png" onerror="this.onerror=null; this.src='manifiesto.PNG';" alt="Manifiesto Los Laureles">
       <p style="color: var(--cielo); font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;">
         "LA VERDADERA GLORIA NO ESTÁ EN LLEGAR, SINO EN PERMANECER."
       </p>
     </div>
   </section>
 
+  <!-- Paleta de Colores -->
   <section class="palette-section" id="paleta">
     <h2>Paleta de Colores</h2>
     <div class="palette-grid">
-      <div class="color-card negro">
-        <p>NEGRO</p>
-        <p>#111111</p>
-      </div>
-      <div class="color-card hueso">
-        <p>HUESO</p>
-        <p>#EDE8DC</p>
-      </div>
-      <div class="color-card cielo">
-        <p>CIELO</p>
-        <p>#7396CE</p>
-      </div>
-      <div class="color-card laurel">
-        <p>LAUREL</p>
-        <p>#43583A</p>
-      </div>
+      <div class="color-card negro"><p>NEGRO</p><p>#111111</p></div>
+      <div class="color-card hueso"><p>HUESO</p><p>#EDE8DC</p></div>
+      <div class="color-card cielo"><p>CIELO</p><p>#7396CE</p></div>
+      <div class="color-card laurel"><p>LAUREL</p><p>#43583A</p></div>
     </div>
   </section>
 
+  <!-- Colección / Catálogo -->
   <section class="coleccion" id="coleccion">
     <h2>Colección</h2>
     <div class="grid">
 
+      <!-- Producto 1 -->
       <div class="card">
         <img src="remera1.PNG" onerror="this.onerror=null; this.src='remera1.png';" alt="Remera 1 Los Laureles">
         <h3>REMERA OVERSIZED</h3>
-        <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
+        <a href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Oversized" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR WA 1</a>
+        <a href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Oversized" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 0.4rem; background-color: var(--laurel); border-color: var(--laurel);">CONSULTAR WA 2</a>
       </div>
 
+      <!-- Producto 2 -->
       <div class="card">
         <img src="remera2.PNG" onerror="this.onerror=null; this.src='remera2.png';" alt="Remera 2 Los Laureles">
         <h3>REMERA URBAN</h3>
-        <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
+        <a href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Urban" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR WA 1</a>
+        <a href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Remera%20Urban" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 0.4rem; background-color: var(--laurel); border-color: var(--laurel);">CONSULTAR WA 2</a>
       </div>
 
+      <!-- Producto 3 -->
       <div class="card">
         <img src="gorra.PNG" onerror="this.onerror=null; this.src='gorra.png';" alt="Gorra Los Laureles">
         <h3>GORRA SOL DE MAYO</h3>
-        <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
+        <a href="https://wa.me/5493515939008?text=Hola!%20Quiero%20consultar%20por%20la%20Gorra%20Sol%20de%20Mayo" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR WA 1</a>
+        <a href="https://wa.me/5493517592695?text=Hola!%20Quiero%20consultar%20por%20la%20Gorra%20Sol%20de%20Mayo" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 0.4rem; background-color: var(--laurel); border-color: var(--laurel);">CONSULTAR WA 2</a>
       </div>
 
     </div>
   </section>
 
+  <!-- Tabla de Talles -->
+  <section class="talles-section" id="talles">
+    <h2>Tabla de Talles</h2>
+    <table class="tabla-talles">
+      <thead>
+        <tr>
+          <th>TALLE</th>
+          <th>ANCHO (CM)</th>
+          <th>LARGO (CM)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>S</td><td>54</td><td>70</td></tr>
+        <tr><td>M</td><td>56</td><td>72</td></tr>
+        <tr><td>L</td><td>58</td><td>74</td></tr>
+        <tr><td>XL</td><td>60</td><td>76</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
   <footer id="contacto">
     <p>LOS LAURELES — ETERNOS EN EL TIEMPO</p>
     <p style="margin-top: 0.8rem;">
-      <a href="https://instagram.com" target="_blank">INSTAGRAM</a> | 
-      <a href="https://wa.me/" target="_blank">WHATSAPP</a>
+      <a href="https://wa.me/5493515939008" target="_blank">WHATSAPP 1</a> | 
+      <a href="https://wa.me/5493517592695" target="_blank">WHATSAPP 2</a> | 
+      <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
     </p>
   </footer>
 
