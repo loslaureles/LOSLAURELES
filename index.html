@@ -13,89 +13,296 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Courier New', Courier, monospace, sans-serif; background-color: var(--hueso); color: var(--negro); line-height: 1.6; }
+    
+    body {
+      font-family: 'Courier New', Courier, monospace, sans-serif;
+      background-color: var(--hueso);
+      color: var(--negro);
+      line-height: 1.6;
+    }
 
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background-color: var(--hueso); border-bottom: 2px solid var(--negro); position: sticky; top: 0; z-index: 100; }
-    .brand-logo img { height: 50px; width: auto; display: block; object-fit: contain; }
+    /* Navegación */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--hueso);
+      border-bottom: 2px solid var(--negro);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo img {
+      height: 50px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
 
     nav ul { display: flex; list-style: none; gap: 2rem; }
-    nav a { color: var(--negro); text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+    nav a {
+      color: var(--negro);
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    nav a:hover { color: var(--laurel); }
 
-    header { padding: 4rem 2rem; text-align: center; border-bottom: 2px solid var(--negro); }
-    header h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
-    header .claim { font-size: 1.2rem; font-weight: bold; letter-spacing: 3px; color: var(--laurel); margin-bottom: 2rem; }
+    /* Header / Banner Principal */
+    header {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--negro);
+      background-color: var(--hueso);
+    }
 
-    .btn { display: inline-block; background-color: var(--negro); color: var(--hueso); padding: 0.8rem 2.2rem; text-decoration: none; font-weight: bold; text-transform: uppercase; border: 2px solid var(--negro); transition: all 0.2s; }
-    .btn:hover { background-color: var(--laurel); border-color: var(--laurel); }
+    .hero-img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border: 2px solid var(--negro);
+      margin-bottom: 2rem;
+    }
 
-    .manifiesto { background-color: var(--negro); color: var(--hueso); padding: 4rem 2rem; text-align: center; }
-    .manifiesto-container { max-width: 800px; margin: 0 auto; }
-    .manifiesto img { width: 100%; max-width: 600px; border: 1px solid var(--hueso); margin-bottom: 2rem; }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
 
-    .coleccion { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
-    .coleccion h2 { text-align: center; font-size: 2rem; margin-bottom: 3rem; letter-spacing: 2px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .card { background-color: var(--hueso); border: 2px solid var(--negro); padding: 1rem; text-align: center; }
-    .card img { width: 100%; height: 350px; object-fit: cover; border: 1px solid var(--negro); margin-bottom: 1rem; }
-    .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; text-transform: uppercase; }
+    header .claim {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: var(--laurel);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
 
-    footer { background-color: var(--negro); color: var(--hueso); padding: 2.5rem 2rem; text-align: center; }
-    footer a { color: var(--cielo); text-decoration: none; font-weight: bold; margin: 0 0.5rem; }
+    .btn {
+      display: inline-block;
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 0.8rem 2.2rem;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: 2px solid var(--negro);
+      letter-spacing: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--laurel);
+      border-color: var(--laurel);
+      color: var(--hueso);
+    }
+
+    /* Paleta de Colores del Manual */
+    .palette-section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-bottom: 2px solid var(--negro);
+    }
+
+    .palette-section h2 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .color-card {
+      padding: 1.5rem;
+      border: 2px solid var(--negro);
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .color-card.negro { background-color: var(--negro); color: var(--hueso); }
+    .color-card.hueso { background-color: var(--hueso); color: var(--negro); }
+    .color-card.cielo { background-color: var(--cielo); color: var(--negro); }
+    .color-card.laurel { background-color: var(--laurel); color: var(--hueso); }
+
+    /* Sección Manifiesto */
+    .manifiesto {
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--negro);
+    }
+
+    .manifiesto-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .manifiesto img {
+      width: 100%;
+      max-width: 650px;
+      border: 2px solid var(--hueso);
+      margin-bottom: 2rem;
+    }
+
+    /* Catálogo / Colección */
+    .coleccion {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .coleccion h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background-color: var(--hueso);
+      border: 2px solid var(--negro);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border: 1px solid var(--negro);
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--negro);
+      color: var(--hueso);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 2px solid var(--negro);
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    footer a {
+      color: var(--cielo);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0.5rem;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navegación con detección automática minúscula/mayúscula -->
+  <!-- Navegación con tu Logo -->
   <nav>
     <div class="brand-logo">
-      <img src="logo.png" onerror="this.onerror=null; this.src='logo.PNG';" alt="LOS LAURELES">
+      <img src="logo.PNG" alt="LOS LAURELES">
     </div>
     <ul>
-      <li><a href="#manifiesto">Identidad</a></li>
+      <li><a href="#identidad">Identidad</a></li>
+      <li><a href="#paleta">Paleta</a></li>
       <li><a href="#coleccion">Colección</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-  <!-- Portada -->
+  <!-- Header / Portada Principal -->
   <header>
+    <img src="inicio.PNG" alt="Inicio Los Laureles" class="hero-img">
     <h1>LOS LAURELES</h1>
     <div class="claim">ETERNOS EN EL TIEMPO</div>
     <a href="#coleccion" class="btn">Ver Colección</a>
   </header>
 
-  <!-- Manifiesto -->
-  <section class="manifiesto" id="manifiesto">
+  <!-- Sección Manifiesto del PDF -->
+  <section class="manifiesto" id="identidad">
     <div class="manifiesto-container">
-      <img src="manifiesto.png" onerror="this.onerror=null; this.src='manifiesto.PNG';" alt="Manifiesto Los Laureles">
-      <p style="color: var(--cielo); font-weight: bold; letter-spacing: 2px;">
-        LA VERDADERA GLORIA NO ESTÁ EN LLEGAR, SINO EN PERMANECER.
+      <img src="manifiesto.PNG" alt="Manifiesto Los Laureles">
+      <p style="color: var(--cielo); font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;">
+        "LA VERDADERA GLORIA NO ESTÁ EN LLEGAR, SINO EN PERMANECER."
       </p>
     </div>
   </section>
 
-  <!-- Colección -->
+  <!-- Paleta de Colores Extraída del PDF -->
+  <section class="palette-section" id="paleta">
+    <h2>Paleta de Colores</h2>
+    <div class="palette-grid">
+      <div class="color-card negro">
+        <p>NEGRO</p>
+        <p>#111111</p>
+      </div>
+      <div class="color-card hueso">
+        <p>HUESO</p>
+        <p>#EDE8DC</p>
+      </div>
+      <div class="color-card cielo">
+        <p>CIELO</p>
+        <p>#7396CE</p>
+      </div>
+      <div class="color-card laurel">
+        <p>LAUREL</p>
+        <p>#43583A</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo de Productos con tus Fotos -->
   <section class="coleccion" id="coleccion">
-    <h2>COLECCIÓN</h2>
+    <h2>Colección</h2>
     <div class="grid">
 
       <!-- Remera 1 -->
       <div class="card">
-        <img src="remera1.png" onerror="this.onerror=null; this.src='remera1.PNG';" alt="Remera Los Laureles 1">
+        <img src="remera1.PNG" alt="Remera 1 Los Laureles">
         <h3>REMERA OVERSIZED</h3>
         <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
       </div>
 
       <!-- Remera 2 -->
       <div class="card">
-        <img src="remera2.png" onerror="this.onerror=null; this.src='remera2.PNG';" alt="Remera Los Laureles 2">
+        <img src="remera2.PNG" alt="Remera 2 Los Laureles">
         <h3>REMERA URBAN</h3>
         <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
       </div>
 
       <!-- Gorra -->
       <div class="card">
-        <img src="gorra.PNG" onerror="this.onerror=null; this.src='gorra.png';" alt="Gorra Los Laureles">
+        <img src="gorra.PNG" alt="Gorra Los Laureles">
         <h3>GORRA SOL DE MAYO</h3>
         <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
       </div>
@@ -103,10 +310,10 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Pie de Página -->
   <footer id="contacto">
     <p>LOS LAURELES — ETERNOS EN EL TIEMPO</p>
-    <p style="margin-top: 0.5rem;">
+    <p style="margin-top: 0.8rem;">
       <a href="https://instagram.com" target="_blank">INSTAGRAM</a> | 
       <a href="https://wa.me/" target="_blank">WHATSAPP</a>
     </p>
