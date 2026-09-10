@@ -21,7 +21,6 @@
       line-height: 1.6;
     }
 
-    /* Navegación */
     nav {
       display: flex;
       justify-content: space-between;
@@ -52,7 +51,6 @@
     }
     nav a:hover { color: var(--laurel); }
 
-    /* Header / Banner Principal */
     header {
       padding: 3rem 2rem;
       text-align: center;
@@ -104,7 +102,6 @@
       color: var(--hueso);
     }
 
-    /* Paleta de Colores del Manual */
     .palette-section {
       padding: 4rem 2rem;
       max-width: 1000px;
@@ -139,7 +136,6 @@
     .color-card.cielo { background-color: var(--cielo); color: var(--negro); }
     .color-card.laurel { background-color: var(--laurel); color: var(--hueso); }
 
-    /* Sección Manifiesto */
     .manifiesto {
       background-color: var(--negro);
       color: var(--hueso);
@@ -155,12 +151,11 @@
 
     .manifiesto img {
       width: 100%;
-      max-width: 650px;
-      border: 2px solid var(--hueso);
+      max-width: 700px;
+      border: 1px solid var(--hueso);
       margin-bottom: 2rem;
     }
 
-    /* Catálogo / Colección */
     .coleccion {
       max-width: 1200px;
       margin: 4rem auto;
@@ -203,7 +198,6 @@
       letter-spacing: 1px;
     }
 
-    /* Footer */
     footer {
       background-color: var(--negro);
       color: var(--hueso);
@@ -227,10 +221,9 @@
 </head>
 <body>
 
-  <!-- Navegación con tu Logo -->
   <nav>
     <div class="brand-logo">
-      <img src="logo.PNG" alt="LOS LAURELES">
+      <img src="logo.PNG" onerror="this.onerror=null; this.src='logo.png';" alt="LOS LAURELES">
     </div>
     <ul>
       <li><a href="#identidad">Identidad</a></li>
@@ -240,25 +233,22 @@
     </ul>
   </nav>
 
-  <!-- Header / Portada Principal -->
   <header>
-    <img src="inicio.PNG" alt="Inicio Los Laureles" class="hero-img">
+    <img src="inicio.PNG" onerror="this.onerror=null; this.src='inicio.png';" alt="Inicio Los Laureles" class="hero-img">
     <h1>LOS LAURELES</h1>
     <div class="claim">ETERNOS EN EL TIEMPO</div>
     <a href="#coleccion" class="btn">Ver Colección</a>
   </header>
 
-  <!-- Sección Manifiesto del PDF -->
   <section class="manifiesto" id="identidad">
     <div class="manifiesto-container">
-      <img src="manifiesto.PNG" alt="Manifiesto Los Laureles">
+      <img src="manifiesto.PNG" onerror="this.onerror=null; this.src='manifiesto.png';" alt="Manifiesto Los Laureles">
       <p style="color: var(--cielo); font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;">
         "LA VERDADERA GLORIA NO ESTÁ EN LLEGAR, SINO EN PERMANECER."
       </p>
     </div>
   </section>
 
-  <!-- Paleta de Colores Extraída del PDF -->
   <section class="palette-section" id="paleta">
     <h2>Paleta de Colores</h2>
     <div class="palette-grid">
@@ -281,28 +271,24 @@
     </div>
   </section>
 
-  <!-- Catálogo de Productos con tus Fotos -->
   <section class="coleccion" id="coleccion">
     <h2>Colección</h2>
     <div class="grid">
 
-      <!-- Remera 1 -->
       <div class="card">
-        <img src="remera1.PNG" alt="Remera 1 Los Laureles">
+        <img src="remera1.PNG" onerror="this.onerror=null; this.src='remera1.png';" alt="Remera 1 Los Laureles">
         <h3>REMERA OVERSIZED</h3>
         <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
       </div>
 
-      <!-- Remera 2 -->
       <div class="card">
-        <img src="remera2.PNG" alt="Remera 2 Los Laureles">
+        <img src="remera2.PNG" onerror="this.onerror=null; this.src='remera2.png';" alt="Remera 2 Los Laureles">
         <h3>REMERA URBAN</h3>
         <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
       </div>
 
-      <!-- Gorra -->
       <div class="card">
-        <img src="gorra.PNG" alt="Gorra Los Laureles">
+        <img src="gorra.PNG" onerror="this.onerror=null; this.src='gorra.png';" alt="Gorra Los Laureles">
         <h3>GORRA SOL DE MAYO</h3>
         <a href="#contacto" class="btn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">CONSULTAR</a>
       </div>
@@ -310,7 +296,6 @@
     </div>
   </section>
 
-  <!-- Pie de Página -->
   <footer id="contacto">
     <p>LOS LAURELES — ETERNOS EN EL TIEMPO</p>
     <p style="margin-top: 0.8rem;">
