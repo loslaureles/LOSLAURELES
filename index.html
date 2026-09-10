@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="LOS LAURELES — Eternos en el tiempo. Indumentaria argentina de edición limitada.">
   <meta name="theme-color" content="#111111">
   <title>LOS LAURELES | Eternos en el tiempo</title>
@@ -22,17 +22,27 @@
       --linea:rgba(17,17,17,.22);
       --display:"Arial Narrow","Anek Latin",Arial,sans-serif;
       --body:"Anek Latin",Arial,sans-serif;
+      --hero-vh:100vh;
     }
 
     * { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; scroll-padding-top:78px; }
+    html {
+      scroll-behavior:smooth;
+      scroll-padding-top:78px;
+      width:100%;
+      overflow-x:hidden;
+      overscroll-behavior-x:none;
+      -webkit-text-size-adjust:100%;
+    }
     body {
+      width:100%;
       background:var(--hueso);
       color:var(--negro);
       font-family:var(--body);
       font-size:16px;
       line-height:1.45;
       overflow-x:hidden;
+      overscroll-behavior-x:none;
     }
     img { display:block; max-width:100%; }
     a { color:inherit; }
@@ -51,6 +61,7 @@
       background:rgba(237,232,220,.96);
       border-bottom:1px solid var(--negro);
       backdrop-filter:blur(12px);
+      transform:translateZ(0);
     }
     .brand-logo img { width:auto; height:48px; }
     nav ul { display:flex; align-items:center; gap:24px; list-style:none; }
@@ -61,6 +72,7 @@
       font-size:12px;
       font-weight:700;
       letter-spacing:1.4px;
+      touch-action:manipulation;
     }
     nav a::after {
       content:"";
@@ -84,13 +96,18 @@
       justify-content:center;
       flex-direction:column;
       gap:5px;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
     }
-    .menu-toggle span { width:20px; height:1px; background:var(--negro); }
+    .menu-toggle span { width:20px; height:1px; background:var(--negro); transition:transform .2s ease,opacity .2s ease; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
 
     /* ========================= HERO ========================= */
     .hero {
       position:relative;
-      min-height:calc(100vh - 78px);
+      min-height:calc(var(--hero-vh) - 78px);
       display:flex;
       align-items:flex-end;
       overflow:hidden;
@@ -168,6 +185,7 @@
       font-weight:800;
       letter-spacing:2px;
       border-bottom:1px solid var(--hueso);
+      touch-action:manipulation;
     }
     .arrow-link:hover { color:var(--cielo); border-color:var(--cielo); }
 
@@ -282,9 +300,10 @@
       font-weight:800;
       letter-spacing:1.4px;
       transition:.2s ease;
+      touch-action:manipulation;
     }
     .buy-link:hover { background:var(--laurel); border-color:var(--laurel); }
-    .alt-link { color:var(--gris); font-size:10px; font-weight:700; text-decoration:none; text-transform:uppercase; letter-spacing:1px; }
+    .alt-link { color:var(--gris); font-size:10px; font-weight:700; text-decoration:none; text-transform:uppercase; letter-spacing:1px; touch-action:manipulation; }
     .alt-link:hover { color:var(--laurel); }
 
     /* ========================= MANIFESTO ========================= */
@@ -383,8 +402,10 @@
       font-weight:800;
       text-transform:uppercase;
       letter-spacing:1px;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
     }
-    .faq-plus { font-size:24px; font-weight:300; line-height:1; }
+    .faq-plus { font-size:24px; font-weight:300; line-height:1; transition:transform .2s ease; }
     .faq-answer { display:none; padding:0 8vw 25px 5vw; max-width:800px; color:var(--gris); font-size:14px; }
     .faq-item.open .faq-answer { display:block; }
     .faq-item.open .faq-plus { transform:rotate(45deg); }
@@ -413,7 +434,7 @@
     .contact-main p { max-width:480px; margin-top:30px; font-size:14px; }
     .contact-side { display:flex; flex-direction:column; justify-content:space-between; padding:65px 5vw; }
     .contact-links { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
-    .contact-links a { color:var(--hueso); text-decoration:none; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; }
+    .contact-links a { color:var(--hueso); text-decoration:none; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; touch-action:manipulation; }
     .contact-links a:hover { color:var(--cielo); }
     .copyright { font-size:10px; letter-spacing:1.2px; text-transform:uppercase; opacity:.75; }
 
@@ -440,42 +461,73 @@
       nav { min-height:70px; }
       .brand-logo img { height:42px; }
       .menu-toggle { display:flex; }
+
+      /* menu: animated open instead of instant display toggle, so taps feel immediate */
       nav ul {
         position:absolute;
-        top:69px;
+        top:70px;
         left:0;
         right:0;
-        display:none;
+        width:100%;
+        display:flex;
         flex-direction:column;
         gap:0;
         background:var(--hueso);
         border-bottom:1px solid var(--negro);
+        max-height:0;
+        overflow:hidden;
+        visibility:hidden;
+        transition:max-height .25s ease, visibility 0s linear .25s;
       }
-      nav ul.active { display:flex; }
+      nav ul.active {
+        max-height:400px;
+        visibility:visible;
+        transition:max-height .25s ease, visibility 0s linear 0s;
+      }
       nav li { width:100%; }
-      nav a { display:block; padding:16px 20px; border-bottom:1px solid var(--linea); font-size:11px; }
+      nav a {
+        display:block;
+        padding:17px 20px;
+        border-bottom:1px solid var(--linea);
+        font-size:13px;
+        letter-spacing:1.6px;
+      }
       nav a::after { display:none; }
 
-      .hero { min-height:calc(100vh - 70px); }
-      .hero-inner { padding:42px 20px 25px; }
-      .hero-kicker { margin-bottom:28px; flex-direction:column; gap:6px; }
-      .hero-title { font-size:clamp(4.7rem,24vw,8rem); line-height:.76; }
-      .hero-claim { margin-top:25px; font-size:12px; letter-spacing:2.4px; }
-      .hero-bottom { margin-top:35px; align-items:start; flex-direction:column; gap:24px; }
-      .hero-meta { font-size:9px; }
+      .hero {
+        min-height:calc(var(--hero-vh) - 70px);
+        align-items:center;
+      }
+      .hero-inner { padding:32px 20px 28px; }
+      .hero-kicker {
+        margin-bottom:22px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+        font-size:10px;
+        letter-spacing:1.3px;
+      }
+      .hero-title { font-size:clamp(4rem,20vw,6.6rem); line-height:.86; letter-spacing:-.045em; }
+      .hero-claim { margin-top:22px; font-size:13px; letter-spacing:2.6px; }
+      .hero-bottom { margin-top:32px; align-items:flex-start; flex-direction:column; gap:22px; }
+      .hero-meta { font-size:10px; letter-spacing:1.4px; }
+      .arrow-link { font-size:13px; padding:10px 0; }
 
       .ticker { grid-template-columns:1fr; }
-      .ticker-item { border-right:0; border-bottom:1px solid #3d3d3d; padding:14px; }
+      .ticker-item { border-right:0; border-bottom:1px solid #3d3d3d; padding:15px; font-size:12px; }
       .ticker-item:last-child { border-bottom:0; }
 
       .section-head { padding:25px 20px 15px; display:block; }
       .section-title { font-size:clamp(48px,17vw,80px); margin-top:10px; }
-      .section-note { margin-top:20px; font-size:12px; }
+      .section-note { margin-top:20px; font-size:13px; }
 
       .product { grid-column:span 12; border-right:0; }
       .product-image { aspect-ratio:1/1.12; }
       .product-info { padding:18px 20px 22px; }
       .product-name { font-size:31px; }
+      .product-type { font-size:12px; }
+      .buy-link { font-size:11px; padding:11px 15px; min-height:44px; }
+      .alt-link { font-size:11px; }
 
       .manifesto { min-height:auto; padding:70px 20px; }
       .manifesto-label { display:block; }
@@ -487,18 +539,32 @@
       .guide-block { padding:48px 20px; }
       .guide-block:nth-child(odd) { border-right:0; }
       .guide-title { font-size:55px; }
+      .guide-intro { font-size:14px; }
       .care-row { grid-template-columns:85px 1fr; }
+      .care-row strong { font-size:12px; }
+      .care-row span { font-size:14px; }
+      .size-table th,.size-table td { font-size:13px; }
 
       .palette { padding:0 20px 50px; }
       .palette-grid { grid-template-columns:1fr 1fr; }
       .swatch { min-height:150px; padding:13px; }
       .swatch-name { font-size:25px; }
+      .swatch-code { font-size:12px; }
 
-      .faq-button { padding:20px; font-size:12px; }
-      .faq-answer { padding:0 20px 22px; font-size:13px; }
+      .faq-button { padding:20px; font-size:13px; }
+      .faq-answer { padding:0 20px 22px; font-size:14px; }
 
       .contact-main,.contact-side { padding:50px 20px; }
       .contact-main h2 { font-size:65px; }
+      .contact-main p { font-size:14px; }
+      .contact-links a { font-size:13px; }
+      .copyright { font-size:11px; }
+    }
+
+    /* dynamic viewport height: avoids the "jump" mobile browsers cause when the
+       address bar shows/hides while scrolling (falls back to 100vh above) */
+    @supports (height: 100dvh) {
+      :root { --hero-vh:100dvh; }
     }
   </style>
 </head>
@@ -741,7 +807,7 @@
     menuToggle.addEventListener('click', () => {
       const open = menu.classList.toggle('active');
       menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    }, { passive:true });
 
     menu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
