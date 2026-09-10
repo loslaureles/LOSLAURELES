@@ -41,7 +41,7 @@
       object-fit: contain;
     }
 
-    nav ul { display: flex; list-style: none; gap: 1.5rem; }
+    nav ul { display: flex; list-style: none; gap: 1.2rem; flex-wrap: wrap; }
     nav a {
       color: var(--negro);
       text-decoration: none;
@@ -96,6 +96,34 @@
       color: var(--hueso);
     }
 
+    /* Banner de Beneficios */
+    .features-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      background-color: var(--negro);
+      color: var(--hueso);
+      border-bottom: 2px solid var(--negro);
+      text-align: center;
+    }
+
+    .feature-item {
+      padding: 1.5rem 1rem;
+      border-right: 1px solid #333;
+    }
+
+    .feature-item h4 {
+      color: var(--cielo);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+    }
+
+    .feature-item p {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
     /* Manifiesto */
     .manifiesto {
       background-color: var(--negro);
@@ -115,10 +143,36 @@
       max-width: 750px;
       height: auto;
       border: 1px solid var(--hueso);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       display: block;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    .manifiesto-texto {
+      font-size: 1.05rem;
+      letter-spacing: 1.5px;
+      line-height: 2;
+      text-transform: uppercase;
+    }
+
+    .manifiesto-texto p {
+      margin-bottom: 1.2rem;
+    }
+
+    .highlight-cielo {
+      color: var(--cielo);
+      font-weight: bold;
+    }
+
+    .highlight-glow {
+      color: var(--cielo);
+      font-weight: bold;
+      font-size: 1.25rem;
+      letter-spacing: 2.5px;
+      margin-top: 2rem;
+      border-top: 1px dashed var(--cielo);
+      padding-top: 1.5rem;
     }
 
     /* Paleta de Colores */
@@ -232,6 +286,81 @@
       border-bottom: 1px solid var(--negro);
     }
 
+    /* Sección Cuidado de Prendas */
+    .care-section {
+      background-color: var(--hueso);
+      border-top: 2px solid var(--negro);
+      border-bottom: 2px solid var(--negro);
+      padding: 4rem 2rem;
+    }
+
+    .care-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .care-container h2 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2.5rem;
+      font-size: 1.8rem;
+    }
+
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .care-card {
+      border: 2px solid var(--negro);
+      padding: 1.5rem 1rem;
+      background-color: var(--hueso);
+    }
+
+    .care-card h4 {
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--laurel);
+      letter-spacing: 1px;
+    }
+
+    /* Sección Preguntas Frecuentes */
+    .faq-section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .faq-section h2 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      border: 2px solid var(--negro);
+      margin-bottom: 1rem;
+      padding: 1.2rem;
+      background-color: var(--hueso);
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--negro);
+      letter-spacing: 1px;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
     /* Footer */
     footer {
       background-color: var(--negro);
@@ -266,6 +395,8 @@
       <li><a href="#paleta">Paleta</a></li>
       <li><a href="#coleccion">Colección</a></li>
       <li><a href="#talles">Talles</a></li>
+      <li><a href="#cuidado">Cuidado</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
@@ -277,13 +408,40 @@
     <a href="#coleccion" class="btn">Ver Colección</a>
   </header>
 
-  <!-- Manifiesto -->
+  <!-- Banner de Beneficios -->
+  <div class="features-banner">
+    <div class="feature-item">
+      <h4>EDICIÓN LIMITADA</h4>
+      <p>Prendas exclusivas numeradas</p>
+    </div>
+    <div class="feature-item">
+      <h4>ENVÍOS</h4>
+      <p>A Córdoba y todo el país</p>
+    </div>
+    <div class="feature-item">
+      <h4>ATENCIÓN DIRECTA</h4>
+      <p>Asesoramiento por WhatsApp</p>
+    </div>
+  </div>
+
+  <!-- Manifiesto Completo con Texto e Imagen -->
   <section class="manifiesto" id="identidad">
     <div class="manifiesto-container">
       <img src="manifiesto.png" onerror="this.onerror=null; this.src='manifiesto.PNG';" alt="Manifiesto Los Laureles">
-      <p style="color: var(--cielo); font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;">
-        "LA VERDADERA GLORIA NO ESTÁ EN LLEGAR, SINO EN PERMANECER."
-      </p>
+      
+      <div class="manifiesto-texto">
+        <p>NO HABLAMOS DE ALCANZAR LA GLORIA.</p>
+        <p>HABLAMOS DE AQUELLO QUE <span class="highlight-cielo">PERMANECE</span>.</p>
+        <p>DE UNA IDENTIDAD QUE ATRAVIESA EL TIEMPO,</p>
+        <p>CAMBIA DE FORMA, SE TRANSFORMA Y SIGUE VIVA.</p>
+        <p>DE LO QUE HEREDAMOS, HACEMOS PROPIO</p>
+        <p>Y VOLVEMOS A CONTAR A NUESTRA MANERA.</p>
+        <p>PORQUE NUESTRA IDENTIDAD NO VIVE EN EL PASADO.</p>
+        <p>SE LLEVA, SE MEZCLA, SE REINVENTA.</p>
+        <p class="highlight-glow">
+          LA VERDADERA GLORIA NO ESTÁ EN LLEGAR,<br>SINO EN PERMANECER.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -348,6 +506,47 @@
         <tr><td>XL</td><td>60</td><td>76</td></tr>
       </tbody>
     </table>
+  </section>
+
+  <!-- Cuidado de Prendas -->
+  <section class="care-section" id="cuidado">
+    <div class="care-container">
+      <h2>Cuidado de tus Prendas</h2>
+      <div class="care-grid">
+        <div class="care-card">
+          <h4>LAVADO</h4>
+          <p>Lavar siempre con agua fría y prendas del mismo tono.</p>
+        </div>
+        <div class="care-card">
+          <h4>PLANCHADO</h4>
+          <p>Planchar del revés para proteger las estampas e impresiones.</p>
+        </div>
+        <div class="care-card">
+          <h4>SECADO</h4>
+          <p>Secar a la sombra. No utilizar secadora automática.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas Frecuentes -->
+  <section class="faq-section" id="faq">
+    <h2>Preguntas Frecuentes</h2>
+    
+    <div class="faq-item">
+      <h3>¿Cómo realizo un pedido?</h3>
+      <p>Selecciona la prenda que te gusta en la sección Colección y haz clic en cualquiera de nuestros botones de WhatsApp para coordinar talle, pago y envío directo con nosotros.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Cuáles son los medios de pago?</h3>
+      <p>Aceptamos transferencias bancarias, Mercado Pago y efectivo al momento de la entrega presencial.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Realizan envíos?</h3>
+      <p>Hacemos envíos coordinados a toda la ciudad y despachos a todo el país mediante correo.</p>
+    </div>
   </section>
 
   <!-- Footer -->
